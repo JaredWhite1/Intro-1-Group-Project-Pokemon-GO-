@@ -14,7 +14,7 @@
 //#include <SDL2/SDL_thread.h>
 
 //Windows Library
-#include <SDL2\SDL.h>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
 #include <string.h>
@@ -101,6 +101,7 @@ public:
         memset(pixels, WHITE, col * row * sizeof(Uint32));
 
         //SOUND Thread Pool
+        Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 );
         soundCount = 0;
 
       }
@@ -172,6 +173,16 @@ public:
 		if(currentKeyStates[SDL_SCANCODE_X]) key = 'X';
 		if(currentKeyStates[SDL_SCANCODE_Y]) key = 'Y';
 		if(currentKeyStates[SDL_SCANCODE_Z]) key = 'Z';
+		if(currentKeyStates[SDL_SCANCODE_1]) key = '1';
+		if(currentKeyStates[SDL_SCANCODE_2]) key = '2';
+		if(currentKeyStates[SDL_SCANCODE_3]) key = '3';
+		if(currentKeyStates[SDL_SCANCODE_4]) key = '4';
+		if(currentKeyStates[SDL_SCANCODE_5]) key = '5';
+		if(currentKeyStates[SDL_SCANCODE_6]) key = '6';
+		if(currentKeyStates[SDL_SCANCODE_7]) key = '7';
+		if(currentKeyStates[SDL_SCANCODE_8]) key = '8';
+		if(currentKeyStates[SDL_SCANCODE_9]) key = '9';
+		if(currentKeyStates[SDL_SCANCODE_0]) key = '0';
 		if(currentKeyStates[SDL_SCANCODE_SPACE]) key = ' ';
 		if(currentKeyStates[SDL_SCANCODE_DOWN])  key = DOWN_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
@@ -222,9 +233,7 @@ public:
     }
 
     void Sleep(int ms){
-    	cout << "Sleep  ";
     	SDL_Delay(ms);
-    	cout << "Wake up" << endl;
     }
 };
 
@@ -236,7 +245,7 @@ static int Sound(void *data){
 	param *p = (param*)data;
 	p->running = true;
 	Mix_Chunk *gScratch = NULL;
-	Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 );
+	//Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 );
 	gScratch = Mix_LoadWAV( p->name.c_str() );
 
 

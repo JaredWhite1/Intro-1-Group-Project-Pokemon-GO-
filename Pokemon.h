@@ -6,17 +6,21 @@
 
 enum DIR{UP,DOWN,LEFT,RIGHT};
 
+
+
 class Pokemon{
     private:
         Point loc;
         Point oldLoc;
         int speed;
         int dimension1, dimension2, R, G, B;
+        Color pic[80][80];
     public:
         vector <vector<Point> > background;
         string pokemonName;
         Pokemon();
-        void draw(SDL_Plotter&, string pokemonName);
+        void createSprite(string pokemonName);
+        void draw(SDL_Plotter&);
         void erase(SDL_Plotter&);
         void move(DIR);
         void setLoc(Point);
@@ -24,35 +28,46 @@ class Pokemon{
         void scopeBackground(vector <vector<Point> > scopeBackground);
 };
 
-
-
-Pokemon:: Pokemon(){
+Pokemon:: Pokemon()
+{
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 10;
+    speed = 5;
 }
 
-
-void Pokemon:: draw(SDL_Plotter& g, string pokemonName){
+void Pokemon:: createSprite(string pokemonName)
+{
     ifstream pokemonFile;
     pokemonFile.open(pokemonName.c_str());
     pokemonFile >> dimension1 >> dimension2;
-    erase(g);
-    for(int y =0;y <dimension1;y++){
-        for(int x=0; x<dimension2; x++){
-            pokemonFile >> R >> G >> B;
-
-            if(R == 255 && G == 255 && B == 255)
-            {
-                R = background[loc.x+x][loc.y+y].R;
-                G = background[loc.x+x][loc.y+y].G;
-                B = background[loc.x+x][loc.y+y].B;
-            }
-
-            g.plotPixel(loc.x+x,loc.y+y,R,G,B);
+    for(int r = 0; r < dimension1; r++){
+        for(int c = 0; c < dimension2; c++){
+            pokemonFile >> pic[r][c].R;
+            pokemonFile >> pic[r][c].G;
+            pokemonFile >> pic[r][c].B;
         }
     }
     pokemonFile.close();
+}
+
+
+void Pokemon:: draw(SDL_Plotter& g)
+{
+    erase(g);
+    for(int y =0;y <dimension1;y++){
+        for(int x=0; x<dimension2; x++){
+
+            if(pic[y][x].R == 255 && pic[y][x].G == 255 && pic[y][x].B == 255)
+            {
+                pic[y][x].R = background[loc.x+x][loc.y+y].R;
+                pic[y][x].G = background[loc.x+x][loc.y+y].G;
+                pic[y][x].B = background[loc.x+x][loc.y+y].B;
+            }
+
+            g.plotPixel(loc.x+x,loc.y+y,pic[y][x].R, pic[y][x].G, pic[y][x].B);
+        }
+    }
+
 }
 
  void Pokemon:: erase(SDL_Plotter& g){

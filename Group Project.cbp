@@ -38,6 +38,7 @@
 		</Unit>
 		<Unit filename="background.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="player.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

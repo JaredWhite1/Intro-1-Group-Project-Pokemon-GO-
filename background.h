@@ -10,6 +10,13 @@ struct Point {
     Point(int x =0, int y =0);
 };
 
+struct Color{
+    int R, G, B;
+    Color(){
+        R = G = B = 255;
+    }
+};
+
 Point :: Point(int a, int b)
 {
    x= a;
