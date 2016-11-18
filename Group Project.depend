@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1479426285 source:e:\baylor\first year\semester 1\csi\group project\main.cpp
+	<iostream>
+	<fstream>
+	<algorithm>
+	<vector>
+	"SDL_Plotter.h"
+	"Pokemon.h"
+	"background.h"
+
+1479329225 e:\baylor\first year\semester 1\csi\group project\sdl_plotter.h
+	<SDL2\SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string.h>
+	<iostream>
+	<string>
+	<string.h>
+	<map>
+
+1479426075 e:\baylor\first year\semester 1\csi\group project\pokemon.h
+	"SDL_Plotter.h"
+	"background.h"
+	<fstream>
+
+1479425603 e:\baylor\first year\semester 1\csi\group project\background.h
+	"SDL_Plotter.h"
+	<algorithm>
+	<vector>
+
