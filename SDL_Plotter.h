@@ -28,6 +28,7 @@ const char UP_ARROW    = 1;
 const char DOWN_ARROW  = 2;
 const char LEFT_ARROW  = 3;
 const char RIGHT_ARROW = 4;
+const char SPACE = 5;
 const int RED_SHIFT   = 65536;
 const int GREEN_SHIFT = 256;
 const int BLUE_SHIFT  = 1;
@@ -183,7 +184,7 @@ public:
 		if(currentKeyStates[SDL_SCANCODE_8]) key = '8';
 		if(currentKeyStates[SDL_SCANCODE_9]) key = '9';
 		if(currentKeyStates[SDL_SCANCODE_0]) key = '0';
-		if(currentKeyStates[SDL_SCANCODE_SPACE]) key = ' ';
+		if(currentKeyStates[SDL_SCANCODE_SPACE]) key = SPACE;
 		if(currentKeyStates[SDL_SCANCODE_DOWN])  key = DOWN_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_LEFT])  key = LEFT_ARROW;

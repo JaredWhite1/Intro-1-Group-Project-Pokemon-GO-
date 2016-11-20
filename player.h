@@ -5,12 +5,12 @@
 class Player
 {
     private:
-        Point loc;
         Point oldLoc;
         int speed;
         int dimension1, dimension2, R, G, B;
         Color player[76][56];
     public:
+        Point loc;
         vector <vector<Point> > background;
         Player();
         void scopePlayerBackground(vector <vector<Point> > scopePlayerBackground);
@@ -18,18 +18,7 @@ class Player
         void erase(SDL_Plotter&);
         void move(DIR);
         void setLoc(Point);
-        void createSprite1();
-        void createSprite2();
-        void createSprite3();
-        void createSprite4();
-        void createSprite5();
-        void createSprite6();
-        void createSprite7();
-        void createSprite8();
-        void createSprite9();
-        void createSprite10();
-        void createSprite11();
-        void createSprite12();
+        void createSprite(string a);
 };
 
 Player :: Player()
@@ -39,10 +28,10 @@ Player :: Player()
     speed = 7;
 }
 
-void Player:: createSprite1()
+void Player:: createSprite(string a)
 {
     ifstream playerFile;
-    playerFile.open("TFU.txt");
+    playerFile.open(a.c_str());
     dimension1 = 76;
     dimension2 = 56;
     for(int r = 0; r < dimension1; r++){
@@ -55,181 +44,6 @@ void Player:: createSprite1()
     playerFile.close();
 }
 
-void Player:: createSprite2()
-{
-    ifstream playerFile;
-    playerFile.open("TFU-L.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;void createSprite1();
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite3()
-{
-    ifstream playerFile;
-    playerFile.open("TFU-R.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite4()
-{
-    ifstream playerFile;
-    playerFile.open("TFD.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite5()
-{
-    ifstream playerFile;
-    playerFile.open("TFD-L.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite6()
-{
-    ifstream playerFile;
-    playerFile.open("TFD-R.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite7()
-{
-    ifstream playerFile;
-    playerFile.open("TFL.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite8()
-{
-    ifstream playerFile;
-    playerFile.open("TFL-L.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite9()
-{
-    ifstream playerFile;
-    playerFile.open("TFL-R.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite10()
-{
-    ifstream playerFile;
-    playerFile.open("TFR.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite11()
-{
-    ifstream playerFile;
-    playerFile.open("TFR-L.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
-
-void Player:: createSprite12()
-{
-    ifstream playerFile;
-    playerFile.open("TFR-R.txt");
-    dimension1 = 76;
-    dimension2 = 56;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            playerFile >> player[r][c].R;
-            playerFile >> player[r][c].G;
-            playerFile >> player[r][c].B;
-        }
-    }
-    playerFile.close();
-}
 
 void Player::scopePlayerBackground(vector <vector<Point> > scopePlayerBackground)
 {

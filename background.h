@@ -5,7 +5,7 @@
 #include <vector>
 
 struct Point {
-    int x,y;
+    double x,y;
     int R,G,B;
     Point(int x =0, int y =0);
 };

@@ -10,12 +10,13 @@ enum DIR{UP,DOWN,LEFT,RIGHT};
 
 class Pokemon{
     private:
-        Point loc;
         Point oldLoc;
         int speed;
-        int dimension1, dimension2, R, G, B;
-        Color pic[80][80];
+        int R, G, B;
     public:
+        Color pic[80][80];
+        int dimension1, dimension2;
+        Point loc;
         vector <vector<Point> > background;
         string pokemonName;
         Pokemon();
@@ -98,6 +99,13 @@ void Pokemon:: setLoc(Point p){
     loc.x = p.x;
 }
 
+void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
+{
+    scopeBackground.resize(1000, vector <Point>(1000));
+    background.resize(1000, vector <Point>(1000));
+    background = scopeBackground;
+}
+
 void setNamesFileName(string a[256])
 {
     int counter = 0;
@@ -111,10 +119,5 @@ void setNamesFileName(string a[256])
     indexFile.close();
 }
 
-void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
-{
-    scopeBackground.resize(1000, vector <Point>(1000));
-    background.resize(1000, vector <Point>(1000));
-    background = scopeBackground;
-}
+
 #endif // POKEMON_H_INCLUDED

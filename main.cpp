@@ -6,18 +6,24 @@
 #include "Pokemon.h"
 #include "background.h"
 #include "player.h"
+#include "pokeball.h"
+#include "message.h"
 
 using namespace std;
 
 int main(int argc, char ** argv)
 {
+    bool messageShow = false;
+    int dontStop = 0;
     int frame = 0;
+    int direction;
     SDL_Plotter g(1000,1000);
     Pokemon a;
     Pokemon b;
     Background c;
     Player d;
-    Player array[12];
+    Pokeball e;
+    Message f;
     string pokemen[256];
     setNamesFileName(pokemen);
     a.pokemonName = pokemen[0];
@@ -35,7 +41,12 @@ int main(int argc, char ** argv)
     b.createSprite(pokemen[1]);
     d.setLoc(c.objectBackground[500][500]);
     d.scopePlayerBackground(c.objectBackground);
-    d.createSprite1();
+    d.createSprite("TFD.txt");
+    e.scopeBallBackground(c.objectBackground);
+    f.setLoc(c.objectBackground[300][300]);
+    f.scopeMessageBackground(c.objectBackground);
+    f.createSprite("message.txt");
+
 
     while (!g.getQuit())
     {
@@ -48,117 +59,157 @@ int main(int argc, char ** argv)
     	    Key =g.getKey();
     	    switch(Key){
 
-            case UP_ARROW: d.createSprite1();
+            case UP_ARROW: direction = 0;
+                           d.createSprite("TFU.txt");
                            d.move(UP);
                            if(frame == 0)
                            {
                                g.Sleep(100);
-                               d.createSprite2();
+                               d.createSprite("TFU-R.txt");
                                frame = 1;
                            }
                            else if(frame == 1)
                            {
                                g.Sleep(100);
-                               d.createSprite1();
+                               d.createSprite("TFU.txt");
                                frame = 2;
                            }
                            else if(frame == 2)
                            {
                                g.Sleep(100);
-                               d.createSprite3();
+                               d.createSprite("TFU-L.txt");
                                frame = 3;
                            }
                            else if(frame == 3)
                            {
                                g.Sleep(100);
-                               d.createSprite1();
+                               d.createSprite("TFU.txt");
                                frame = 0;
                            }
                            break;
-            case DOWN_ARROW: d.createSprite4();
+            case DOWN_ARROW: d.createSprite("TFD.txt");
                              d.move(DOWN);
+                             direction = 1;
                              if(frame == 0)
                              {
                                  g.Sleep(100);
-                                 d.createSprite5();
+                                 d.createSprite("TFD-R.txt");
                                  frame = 1;
                              }
                              else if(frame == 1)
                              {
                                  g.Sleep(100);
-                                 d.createSprite4();
+                                 d.createSprite("TFD.txt");
                                  frame = 2;
                              }
                              else if(frame == 2)
                              {
                                  g.Sleep(100);
-                                 d.createSprite6();
+                                 d.createSprite("TFD-L.txt");
                                  frame = 3;
                              }
                              else if(frame == 3)
                              {
                                  g.Sleep(100);
-                                 d.createSprite4();
+                                 d.createSprite("TFD.txt");
                                  frame = 0;
                              }
                              break;
-            case LEFT_ARROW: d.createSprite7();
+            case LEFT_ARROW: d.createSprite("TFL.txt");
                              d.move(LEFT);
+                             direction = 2;
                              if(frame == 0)
                              {
                                  g.Sleep(100);
-                                 d.createSprite8();
+                                 d.createSprite("TFL-R.txt");
                                  frame = 1;
                              }
                              else if(frame == 1)
                              {
                                  g.Sleep(100);
-                                 d.createSprite7();
+                                 d.createSprite("TFL.txt");
                                  frame = 2;
                              }
                              else if(frame == 2)
                              {
                                  g.Sleep(100);
-                                 d.createSprite9();
+                                 d.createSprite("TFL-L.txt");
                                  frame = 3;
                              }
                              else if(frame == 3)
                              {
                                  g.Sleep(100);
-                                 d.createSprite7();
+                                 d.createSprite("TFL.txt");
                                  frame = 0;
                              }
                              break;
-            case RIGHT_ARROW: d.createSprite10();
+            case RIGHT_ARROW: d.createSprite("TFR.txt");
                               d.move(RIGHT);
+                              direction = 3;
                               if(frame == 0)
                               {
                                   g.Sleep(100);
-                                  d.createSprite11();
+                                  d.createSprite("TFR-R.txt");
                                   frame = 1;
                               }
                               else if(frame == 1)
                               {
                                   g.Sleep(100);
-                                  d.createSprite10();
+                                  d.createSprite("TFR.txt");
                                   frame = 2;
                               }
                               else if(frame == 2)
                               {
                                   g.Sleep(100);
-                                  d.createSprite12();
+                                  d.createSprite("TFR-L.txt");
                                   frame = 3;
                               }
                               else if(frame == 3)
                               {
                                   g.Sleep(100);
-                                  d.createSprite10();
+                                  d.createSprite("TFR.txt");
                                   frame = 0;
                               }
                               break;
+            case SPACE: e.createSprite();
+                        e.setLoc(d.loc);
+                        dontStop++;
+                        break;
     	    }
 
         }
+
+        if(dontStop != 0)
+        {
+            while(dontStop != 0)
+            {
+                e.move(direction);
+                e.draw(g);
+                e.createSprite();
+                d.draw(g);
+                g.update();
+
+                if((e.loc.x <= 100 || e.loc.y <= 100 || e.loc.x >= 900 || e.loc.y >= 900)
+                   || ballCollide(e, a) == true)
+                {
+                    f.setLoc(e.loc);
+                    dontStop = 0;
+                    messageShow = true;
+                }
+            }
+        }
+
+        if(messageShow == true)
+        {
+
+            f.scopeMessageBackground(c.objectBackground);
+            f.createSprite("message.txt");
+            f.draw(g);
+            e.draw(g);
+            g.update();
+        }
+
+
 
 
     	}
