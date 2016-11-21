@@ -50,8 +50,14 @@ int main(int argc, char ** argv)
 
     while (!g.getQuit())
     {
-        b.draw(g);
-        a.draw(g);
+        if(b.deleted == false)
+        {
+            b.draw(g);
+        }
+        if(a.deleted == false)
+        {
+            a.draw(g);
+        }
         d.draw(g);
         g.update();
 
@@ -201,11 +207,12 @@ int main(int argc, char ** argv)
 
         if(messageShow == true)
         {
-
             f.scopeMessageBackground(c.objectBackground);
             f.createSprite("message.txt");
             f.draw(g);
-            e.draw(g);
+            e.erase(g);
+            a.deleted = true;
+            a.erase(g);
             g.update();
         }
 

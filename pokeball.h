@@ -105,30 +105,40 @@ void Pokeball::setLoc(Point p)
 
 bool ballCollide(Pokeball a, Pokemon b)
 {
+    bool collide;
+    bool stop = false;
+
     int g = 0;
     int h = 0;
-    bool collide;
+
     for(int i = 0; i < b.dimension1; i++)
     {
-        if(h != 20)
-        {
-            h++;
-        }
         for(int f = 0; f < b.dimension2; f++)
         {
-            if(g != 20)
-            {
-                g++;
-            }
-
-            if((a.loc.x + g == b.loc.x + f || a.loc.y + h == b.loc.y + i))
+            if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
             {
                 collide = true;
+                stop = true;
+                break;
             }
             else
             {
                 collide = false;
             }
+
+            if(g <= 20)
+            {
+                g++;
+            }
+        }
+        if(stop == true)
+        {
+            break;
+        }
+
+        if(h <= 20)
+        {
+            h++;
         }
     }
     return collide;

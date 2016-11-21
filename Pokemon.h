@@ -14,12 +14,14 @@ class Pokemon{
         int speed;
         int R, G, B;
     public:
+        bool deleted = false;
         Color pic[80][80];
         int dimension1, dimension2;
         Point loc;
         vector <vector<Point> > background;
         string pokemonName;
         Pokemon();
+        ~Pokemon();
         void createSprite(string pokemonName);
         void draw(SDL_Plotter&);
         void erase(SDL_Plotter&);
@@ -27,6 +29,7 @@ class Pokemon{
         void setLoc(Point);
         void openFile(string pokemonName);
         void scopeBackground(vector <vector<Point> > scopeBackground);
+        void deletePokemon(SDL_Plotter&, bool& deleted);
 };
 
 Pokemon:: Pokemon()
@@ -34,6 +37,11 @@ Pokemon:: Pokemon()
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
     speed = 5;
+}
+
+Pokemon:: ~Pokemon()
+{
+
 }
 
 void Pokemon:: createSprite(string pokemonName)
