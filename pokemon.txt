@@ -1,2 +1,16 @@
 pikachu.txt
 bulbasaur.txt
+caterpie.txt
+charmander.txt
+cubone.txt
+gastly.txt
+growlithe.txt
+koffing.txt
+mew.txt
+onix.txt
+pidgey.txt
+rattata.txt
+snorlax.txt
+squirtle.txt
+weedle.txt
+zubat.txt
