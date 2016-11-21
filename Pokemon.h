@@ -1,131 +1,110 @@
 #ifndef POKEMON_H_INCLUDED
 #define POKEMON_H_INCLUDED
-#include "SDL_Plotter.h"
-#include "background.h"
+
+#include <ostream>
 #include <fstream>
+#include "SDL_plotter.h"
 
-enum DIR{UP,DOWN,LEFT,RIGHT};
+enum DIR {UP, DOWN, LEFT, RIGHT};
 
-
-
-class Pokemon{
-    private:
-        Point oldLoc;
-        int speed;
-        int R, G, B;
-    public:
-        bool deleted = false;
-        Color pic[80][80];
-        int dimension1, dimension2;
-        Point loc;
-        vector <vector<Point> > background;
-        string pokemonName;
-        Pokemon();
-        ~Pokemon();
-        void createSprite(string pokemonName);
-        void draw(SDL_Plotter&);
-        void erase(SDL_Plotter&);
-        void move(DIR);
-        void setLoc(Point);
-        void openFile(string pokemonName);
-        void scopeBackground(vector <vector<Point> > scopeBackground);
-        void deletePokemon(SDL_Plotter&, bool& deleted);
+struct Point
+{
+    int x,y;
+    Point(int x=0,int y=0);
 };
 
-Pokemon:: Pokemon()
+class Pokemon
 {
-    oldLoc.x = loc.x;
-    oldLoc.y = loc.y;
+    private:
+        Point loc;
+        Point oldLoc;
+        int speed;
+        int R,G,B;
+
+    public:
+        Pokemon();
+        void draw(SDL_Plotter&,string);
+        void erase(SDL_Plotter&,int,int);
+        void move(DIR);
+        void setLoc(Point);
+};
+
+Point::Point(int a, int b)
+{
+    x = a;
+    y = b;
+}
+
+Pokemon::Pokemon()
+{
+    oldLoc = loc;
     speed = 5;
 }
 
-Pokemon:: ~Pokemon()
+void Pokemon::draw(SDL_Plotter& g,string fileName)
 {
-
-}
-
-void Pokemon:: createSprite(string pokemonName)
-{
-    ifstream pokemonFile;
-    pokemonFile.open(pokemonName.c_str());
-    pokemonFile >> dimension1 >> dimension2;
-    for(int r = 0; r < dimension1; r++){
-        for(int c = 0; c < dimension2; c++){
-            pokemonFile >> pic[r][c].R;
-            pokemonFile >> pic[r][c].G;
-            pokemonFile >> pic[r][c].B;
-        }
-    }
-    pokemonFile.close();
-}
-
-
-void Pokemon:: draw(SDL_Plotter& g)
-{
-    erase(g);
-    for(int y =0;y <dimension1;y++){
-        for(int x=0; x<dimension2; x++){
-
-            if(pic[y][x].R == 255 && pic[y][x].G == 255 && pic[y][x].B == 255)
-            {
-                pic[y][x].R = background[loc.x+x][loc.y+y].R;
-                pic[y][x].G = background[loc.x+x][loc.y+y].G;
-                pic[y][x].B = background[loc.x+x][loc.y+y].B;
-            }
-
-            g.plotPixel(loc.x+x,loc.y+y,pic[y][x].R, pic[y][x].G, pic[y][x].B);
-        }
-    }
-
-}
-
- void Pokemon:: erase(SDL_Plotter& g){
-     for(int y= 0;y<dimension1;y++){
-        for(int x =0;x<dimension2;x++){
-                g.plotPixel(oldLoc.x +x,oldLoc.y+y,background[oldLoc.x + x][oldLoc.y + y].R,background[oldLoc.x + x][oldLoc.y + y].G,background[oldLoc.x + x][oldLoc.y + y].B);
-        }
-     }
- }
-
-
-void Pokemon:: move(DIR d){
-    oldLoc.x = loc.x;
-    oldLoc.y = loc.y;
-    switch(d){
-        case UP: loc.y-=speed;
-                break;
-        case DOWN: loc.y+=speed;
-                break;
-        case LEFT: loc.x-=speed;
-                break;
-        case RIGHT: loc.x+=speed;
-                break;
-    }
-}
-void Pokemon:: setLoc(Point p){
-    loc.y = p.y;
-    loc.x = p.x;
-}
-
-void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
-{
-    scopeBackground.resize(1000, vector <Point>(1000));
-    background.resize(1000, vector <Point>(1000));
-    background = scopeBackground;
-}
-
-void setNamesFileName(string a[256])
-{
-    int counter = 0;
-    ifstream indexFile;
-    indexFile.open("pokemon.txt");
-    do
+    ifstream myFile;
+    int dimension1,dimension2;
+    myFile.open(fileName.c_str());
+    myFile >> dimension1 >> dimension2;
+    erase(g,dimension1,dimension2);
+    for(int x =0;x <dimension1;x++)
     {
-        indexFile >> a[counter];
-        counter++;
-    }while(!indexFile.eof());
-    indexFile.close();
+        for(int y=0; y<dimension2; y++)
+        {
+            myFile >> R >> G >> B;
+            g.plotPixel(loc.x+x,loc.y+y,R,G,B);
+        }
+    }
+    g.Sleep(100);
 }
 
+void Pokemon:: erase(SDL_Plotter& g,int dimension1,int dimension2)
+{
+    for(int x= 0;x<dimension1;x++)
+    {
+        for(int y =0;y<dimension2;y++)
+        {
+            g.plotPixel(oldLoc.x +x,oldLoc.y+y,255,255,255);
+        }
+    }
+}
+
+void Pokemon::move(DIR d)
+{
+    oldLoc = loc;
+    switch(d)
+    {
+        case UP:    loc.y-=speed;
+                    if(loc.y<=0)
+                    {
+                        loc.y+=speed;
+                    }
+                    break;
+        case DOWN:  loc.y+=speed;
+                    if(loc.y>=1000)
+                    {
+                        loc.y-=speed;
+                    }
+                    break;
+        case LEFT:  loc.x-=speed;
+                    if(loc.x<=0)
+                    {
+                        loc.x+=speed;
+                    }
+                    break;
+        case RIGHT: loc.x+=speed;
+                    if(loc.x>=1000)
+                    {
+                        loc.x-=speed;
+                    }
+                    break;
+    }
+}
+
+void Pokemon::setLoc(Point p)
+{
+    loc = p;
+}
 
 #endif // POKEMON_H_INCLUDED
