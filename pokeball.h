@@ -21,6 +21,7 @@ class Pokeball
         void move(int);
         void setLoc(Point);
         void createSprite();
+        void specialErase(SDL_Plotter&);
 };
 
 Pokeball :: Pokeball()
@@ -95,6 +96,17 @@ void Pokeball::move(int d)
     case 3: loc.x+=speed;
             break;
     }
+}
+
+void Pokeball::specialErase(SDL_Plotter& g)
+{
+    for(int y= 0;y<dimension1;y++){
+        for(int x =0;x<dimension2;x++){
+                g.plotPixel(loc.x +x,loc.y+y,background[loc.x + x][loc.y + y].R,background[loc.x + x][loc.y + y].G,background[loc.x + x][loc.y + y].B);
+        }
+     }
+     loc.x = 980;
+     loc.y = 980;
 }
 
 void Pokeball::setLoc(Point p)

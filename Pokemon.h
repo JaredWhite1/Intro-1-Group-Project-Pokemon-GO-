@@ -25,11 +25,11 @@ class Pokemon{
         void createSprite(string pokemonName);
         void draw(SDL_Plotter&);
         void erase(SDL_Plotter&);
-        void move(DIR);
+        void move();
         void setLoc(Point);
         void openFile(string pokemonName);
         void scopeBackground(vector <vector<Point> > scopeBackground);
-        void deletePokemon(SDL_Plotter&, bool& deleted);
+        void specialErase(SDL_Plotter&);
 };
 
 Pokemon:: Pokemon()
@@ -80,46 +80,13 @@ void Pokemon:: draw(SDL_Plotter& g)
 }
 
  void Pokemon:: erase(SDL_Plotter& g){
-     for(int y= 0;y<dimension1;y++){
+    for(int y= 0;y<dimension1;y++){
         for(int x =0;x<dimension2;x++){
-                g.plotPixel(oldLoc.x +x,oldLoc.y+y,background[oldLoc.x + x][oldLoc.y + y].R,background[oldLoc.x + x][oldLoc.y + y].G,background[oldLoc.x + x][oldLoc.y + y].B);
+            g.plotPixel(oldLoc.x +x,oldLoc.y+y,background[oldLoc.x + x][oldLoc.y + y].R,background[oldLoc.x + x][oldLoc.y + y].G,background[oldLoc.x + x][oldLoc.y + y].B);
         }
-     }
- }
-
-
-void Pokemon::move(DIR d)
-{
-    oldLoc.x = loc.x;
-    oldLoc.y = loc.y;
-    switch(d)
-    {
-        case UP:    loc.y-=speed;
-                    if(loc.y<=0)
-                    {
-                        loc.y+=speed;
-                    }
-                    break;
-        case DOWN:  loc.y+=speed;
-                    if(loc.y>=1000)
-                    {
-                        loc.y-=speed;
-                    }
-                    break;
-        case LEFT:  loc.x-=speed;
-                    if(loc.x<=0)
-                    {
-                        loc.x+=speed;
-                    }
-                    break;
-        case RIGHT: loc.x+=speed;
-                    if(loc.x>=1000)
-                    {
-                        loc.x-=speed;
-                    }
-                    break;
     }
 }
+
 void Pokemon:: setLoc(Point p){
     loc.y = p.y;
     loc.x = p.x;
@@ -143,6 +110,17 @@ void setNamesFileName(string a[256])
         counter++;
     }while(!indexFile.eof());
     indexFile.close();
+}
+
+void Pokemon::specialErase(SDL_Plotter& g)
+{
+    for(int y= 0;y<dimension1;y++){
+        for(int x =0;x<dimension2;x++){
+            g.plotPixel(loc.x +x,loc.y+y,background[loc.x + x][loc.y + y].R,background[loc.x + x][loc.y + y].G,background[loc.x + x][loc.y + y].B);
+        }
+    }
+    loc.x = 12000;
+    loc.y = 12000;
 }
 
 

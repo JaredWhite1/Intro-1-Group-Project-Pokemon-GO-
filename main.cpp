@@ -50,7 +50,6 @@ int main(int argc, char ** argv)
     f.scopeMessageBackground(c.objectBackground);
     f.createSprite("message.txt");
 
-
     while (!g.getQuit())
     {
         if(b.deleted == false)
@@ -64,8 +63,6 @@ int main(int argc, char ** argv)
         d.draw(g);
         g.update();
 
-        srand(time(NULL));
-        Random = rand()%4+1;
         if(g.kbhit()){
     	    Key =g.getKey();
 
@@ -191,21 +188,6 @@ int main(int argc, char ** argv)
 
         }
 
-        switch(Random)
-        {
-            case UP_ARROW:      a.move(UP);
-                                b.move(UP);
-                                break;
-            case DOWN_ARROW:    a.move(DOWN);
-                                b.move(DOWN);
-                                break;
-            case LEFT_ARROW:    a.move(LEFT);
-                                b.move(LEFT);
-                                break;
-            case RIGHT_ARROW:   a.move(RIGHT);
-                                b.move(RIGHT);
-                                break;
-        }
 
         if(dontStop != 0)
         {
@@ -217,30 +199,39 @@ int main(int argc, char ** argv)
                 d.draw(g);
                 g.update();
 
-                if((e.loc.x <= 100 || e.loc.y <= 100 || e.loc.x >= 900 || e.loc.y >= 900)
-                   || ballCollide(e, a) == true)
+                if(ballCollide(e, a) == true)
                 {
                     f.setLoc(e.loc);
                     dontStop = 0;
                     messageShow = true;
+                    a.specialErase(g);
+                }
+                if(ballCollide(e, b) == true)
+                {
+                    f.setLoc(e.loc);
+                    dontStop = 0;
+                    messageShow = true;
+                    b.specialErase(g);
+                }
+                if(e.loc.x <= 100 || e.loc.y <= 100 || e.loc.x >= 900 || e.loc.y >= 900)
+                {
+                    dontStop = 0;
+                    e.specialErase(g);
+                    g.update();
                 }
             }
         }
 
         if(messageShow == true)
         {
-            f.scopeMessageBackground(c.objectBackground);
-            f.createSprite("message.txt");
-            f.draw(g);
-            e.erase(g);
+            //f.scopeMessageBackground(c.objectBackground);
+            //f.createSprite("message.txt");
+            //f.draw(g);
+            e.specialErase(g);
             a.deleted = true;
-            a.erase(g);
+            b.deleted = true;
             g.update();
         }
-
-
-
-
-    	}
-    	return 0;
+    }
+    return 0;
 }

@@ -25,7 +25,7 @@ Player :: Player()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 7;
+    speed = 14;
 }
 
 void Player:: createSprite(string a)
@@ -84,14 +84,30 @@ void Player::move(DIR d)
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
     switch(d){
-        case UP: loc.y-=speed;
-                break;
-        case DOWN: loc.y+=speed;
-                break;
-        case LEFT: loc.x-=speed;
-                break;
+        case UP:    loc.y-=speed;
+                    if(loc.y<30)
+                    {
+                        loc.y+=speed;
+                    }
+                    break;
+        case DOWN:  loc.y+=speed;
+                    if(loc.y>820)
+                    {
+                        loc.y-=speed;
+                    }
+                    break;
+        case LEFT:  loc.x-=speed;
+                    if(loc.x<40)
+                    {
+                        loc.x+=speed;
+                    }
+                    break;
         case RIGHT: loc.x+=speed;
-                break;
+                    if(loc.x>919)
+                    {
+                        loc.x-=speed;
+                    }
+                    break;
     }
 }
 

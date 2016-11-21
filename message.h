@@ -51,7 +51,6 @@ void Message::scopeMessageBackground(vector <vector<Point> > scopeMessageBackgro
 
 void Message::draw(SDL_Plotter& g)
 {
-    erase(g);
     for(int y =0;y <dimension1;y++){
         for(int x=0; x<dimension2; x++)
         {
@@ -67,10 +66,16 @@ void Message::draw(SDL_Plotter& g)
                 message[y][x].G = background[loc.x+x][loc.y+y].G;
                 message[y][x].B = background[loc.x+x][loc.y+y].B;
             }
-
-            g.plotPixel(loc.x+x,loc.y+y,message[y][x].R, message[y][x].G, message[y][x].B);
+            loc.x+=x;
+            loc.y+=y;
+            oldLoc.x = loc.x;
+            oldLoc.y = loc.y;
+            g.plotPixel(loc.x,loc.y,message[y][x].R, message[y][x].G, message[y][x].B);
+            loc.x-=x;
+            loc.y-=y;
         }
     }
+    erase(g);
 }
 
 void Message::erase(SDL_Plotter& g)
