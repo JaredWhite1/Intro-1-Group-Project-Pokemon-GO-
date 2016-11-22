@@ -99,19 +99,6 @@ void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
     background = scopeBackground;
 }
 
-void setNamesFileName(string a[256])
-{
-    int counter = 0;
-    ifstream indexFile;
-    indexFile.open("pokemon.txt");
-    do
-    {
-        indexFile >> a[counter];
-        counter++;
-    }while(!indexFile.eof());
-    indexFile.close();
-}
-
 void Pokemon::specialErase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){

@@ -28,7 +28,7 @@ Pokeball :: Pokeball()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 5;
+    speed = 8;
 }
 
 void Pokeball:: createSprite()
@@ -113,47 +113,6 @@ void Pokeball::setLoc(Point p)
 {
     loc.y = p.y;
     loc.x = p.x;
-}
-
-bool ballCollide(Pokeball a, Pokemon b)
-{
-    bool collide;
-    bool stop = false;
-
-    int g = 0;
-    int h = 0;
-
-    for(int i = 0; i < b.dimension1; i++)
-    {
-        for(int f = 0; f < b.dimension2; f++)
-        {
-            if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
-            {
-                collide = true;
-                stop = true;
-                break;
-            }
-            else
-            {
-                collide = false;
-            }
-
-            if(g <= 20)
-            {
-                g++;
-            }
-        }
-        if(stop == true)
-        {
-            break;
-        }
-
-        if(h <= 20)
-        {
-            h++;
-        }
-    }
-    return collide;
 }
 
 #endif // POKEBALL_H_INCLUDED

@@ -25,7 +25,7 @@ Player :: Player()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 14;
+    speed = 10;
 }
 
 void Player:: createSprite(string a)

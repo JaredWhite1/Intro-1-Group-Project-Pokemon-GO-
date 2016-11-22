@@ -39,6 +39,8 @@
 		<Unit filename="background.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="message.h" />
+		<Unit filename="message1.h" />
+		<Unit filename="message2.h" />
 		<Unit filename="player.h" />
 		<Unit filename="pokeball.h" />
 		<Extensions>
