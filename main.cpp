@@ -17,11 +17,6 @@
 using namespace std;
 
 void setNamesFileName(string a[]);
-int randomSystemTime(int);
-int randomProcessTicks(int);
-void checkPosition(Pokemon, Background);
-void checkNameEqual(Pokemon, Pokemon, string a[]);
-void checkPositionEqual(Pokemon, Pokemon, Background);
 bool ballCollide(Pokeball a, Pokemon b);
 
 int main(int argc, char ** argv)
@@ -54,85 +49,58 @@ int main(int argc, char ** argv)
     Pokemon c;
     Pokemon d;
     Pokemon e;
-    Pokemon f;
-    Pokemon h;
-    Pokemon i;
-    Pokemon j;
-    Pokemon k;
     Background background;
     Player player;
     Pokeball ball;
     Message clock;
-    string pokemen[16];
+    Message2 scoreMessage;
+    string pokemen[15];
     stringstream integerToString;
     stringstream integerToString2;
     setNamesFileName(pokemen);
 
-    a.pokemonName = pokemen[randomSystemTime(16)];
-    b.pokemonName = pokemen[randomProcessTicks(16)];
-    c.pokemonName = pokemen[randomSystemTime(16)];
-    d.pokemonName = pokemen[randomProcessTicks(16)];
-    e.pokemonName = pokemen[randomSystemTime(16)];
-    f.pokemonName = pokemen[randomProcessTicks(16)];
-    h.pokemonName = pokemen[randomSystemTime(16)];
-    i.pokemonName = pokemen[randomProcessTicks(16)];
-    j.pokemonName = pokemen[randomSystemTime(16)];
-    k.pokemonName = pokemen[randomProcessTicks(16)];
+    int aLocX = 200, aLocY = 300;
+    int bLocX = 300, bLocY = 200;
+    int cLocX = 800, cLocY = 100;
+    int dLocX = 345, dLocY = 567;
+    int eLocX = 123, eLocY = 734;
+
+    int aName = 0;
+    int bName = 1;
+    int cName = 2;
+    int dName = 3;
+    int eName = 4;
+
+    a.pokemonName = pokemen[aName];
+    b.pokemonName = pokemen[bName];
+    c.pokemonName = pokemen[cName];
+    d.pokemonName = pokemen[dName];
+    e.pokemonName = pokemen[eName];
 
     char Key;
 
     background.setBackground();
     background.drawBackground(g);
 
-    a.setLoc(background.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-    checkPosition(a, background);
+    a.setLoc(background.objectBackground[aLocX][aLocY]);
     a.scopeBackground(background.objectBackground);
     a.createSprite(a.pokemonName);
 
-    b.setLoc(background.objectBackground[randomSystemTime(1000)][randomProcessTicks(1000)]);
-    checkPosition(b, background);
+    b.setLoc(background.objectBackground[bLocX][bLocY]);
     b.scopeBackground(background.objectBackground);
     b.createSprite(b.pokemonName);
 
-    c.setLoc(background.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-    checkPosition(c, background);
+    c.setLoc(background.objectBackground[cLocX][cLocY]);
     c.scopeBackground(background.objectBackground);
     c.createSprite(c.pokemonName);
 
-    d.setLoc(background.objectBackground[randomSystemTime(1000)][randomProcessTicks(1000)]);
-    checkPosition(d, background);
+    d.setLoc(background.objectBackground[dLocX][dLocY]);
     d.scopeBackground(background.objectBackground);
     d.createSprite(d.pokemonName);
 
-    e.setLoc(background.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-    checkPosition(e, background);
+    e.setLoc(background.objectBackground[eLocX][eLocY]);
     e.scopeBackground(background.objectBackground);
     e.createSprite(e.pokemonName);
-
-    f.setLoc(background.objectBackground[randomSystemTime(1000)][randomProcessTicks(1000)]);
-    checkPosition(f, background);
-    f.scopeBackground(background.objectBackground);
-    f.createSprite(f.pokemonName);
-
-    h.setLoc(background.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-    checkPosition(h, background);
-    h.scopeBackground(background.objectBackground);
-    h.createSprite(h.pokemonName);
-
-    i.setLoc(background.objectBackground[randomSystemTime(1000)][randomProcessTicks(1000)]);
-    checkPosition(i, background);
-    i.scopeBackground(background.objectBackground);
-    i.createSprite(i.pokemonName);
-
-    j.setLoc(background.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-    checkPosition(j, background);
-    j.scopeBackground(background.objectBackground);
-    j.createSprite(j.pokemonName);
-
-    k.setLoc(background.objectBackground[randomSystemTime(1000)][randomProcessTicks(1000)]);
-    checkPosition(k, background);
-    k.scopeBackground(background.objectBackground);
-    k.createSprite(k.pokemonName);
 
     player.setLoc(background.objectBackground[500][500]);
     player.scopePlayerBackground(background.objectBackground);
@@ -142,6 +110,9 @@ int main(int argc, char ** argv)
 
     clock.scopeMessageBackground(background.objectBackground);
     clock.setLoc(background.objectBackground[812][692]);
+
+    scoreMessage.scopeMessage2Background(background.objectBackground);
+    scoreMessage.setLoc(background.objectBackground[812][827]);
 
     g.initSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
 
@@ -224,43 +195,274 @@ int main(int argc, char ** argv)
 
         if(a.deleted == false)
         {
-            b.draw(g);
+            a.draw(g);
+        }
+        else
+        {
+            if(aLocX > 500 || aLocX < 250)
+            {
+                aLocX += 55;
+                aLocY += 80;
+                if(aName == 0)
+                {
+                    aName = 14;
+                }
+                else
+                {
+                    aName -= 1;
+
+                    if(aName < 0)
+                    {
+                        aName = 13;
+                    }
+                }
+            }
+            else
+            {
+                aLocX += 63;
+                aLocY += 78;
+                if(aName == 0)
+                {
+                    aName = 12;
+                }
+                else
+                {
+                    aName -= 2;
+
+                    if(aName < 0)
+                    {
+                        aName = 10;
+                    }
+                }
+            }
+
+            if(aLocX <= 100 || aLocY <= 100 || aLocX >= 900 || aLocY >= 900 || ((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580)))
+            {
+                aLocX = 600;
+                aLocY = 124;
+            }
+
+
+            a.pokemonName = pokemen[aName];
+            a.setLoc(background.objectBackground[aLocX][aLocY]);
+            a.createSprite(a.pokemonName);
+            a.deleted = false;
         }
         if(b.deleted == false)
         {
-            a.draw(g);
+            b.draw(g);
+        }
+        else
+        {
+            if(bLocX > 400 || bLocX < 135)
+            {
+                bLocX += 34;
+                bLocY += 76;
+                if(bName == 0)
+                {
+                    bName += 3;
+                }
+                else
+                {
+                    bName -= 1;
+
+                    if(bName < 0)
+                    {
+                        bName = 10;
+                    }
+                }
+            }
+            else
+            {
+                bLocX += 63;
+                bLocY += 23;
+                if(bName == 0)
+                {
+                    bName += 12;
+                }
+                else
+                {
+                    bName -= 2;
+
+                    if(bName < 0)
+                    {
+                        bName = 10;
+                    }
+                }
+            }
+
+            if(bLocX <= 100 || bLocY <= 100 || bLocX >= 900 || bLocY >= 900 || ((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580)))
+            {
+                bLocX = 500;
+                bLocY = 124;
+            }
+
+            b.pokemonName = pokemen[bName];
+            b.setLoc(background.objectBackground[bLocX][bLocY]);
+            b.createSprite(b.pokemonName);
+            b.deleted = false;
         }
         if(c.deleted == false)
         {
             c.draw(g);
         }
+        else
+        {
+            if(cLocX > 600 || cLocX < 355)
+            {
+                cLocX += 56;
+                cLocY += 123;
+                if(cName == 0)
+                {
+                    cName += 2;
+                }
+                else
+                {
+                    cName -= 4;
+
+                    if(cName < 0)
+                    {
+                        cName = 10;
+                    }
+                }
+            }
+            else
+            {
+                cLocX += 168;
+                cLocY += 234;
+                if(cName == 0)
+                {
+                    cName += 12;
+                }
+                else
+                {
+                    cName -= 2;
+
+                    if(cName < 0)
+                    {
+                        cName = 10;
+                    }
+                }
+            }
+
+            if(cLocX <= 100 || cLocY <= 100 || cLocX >= 900 || cLocY >= 900 || ((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580)))
+            {
+                cLocX = 400;
+                cLocY = 124;
+            }
+
+            c.pokemonName = pokemen[cName];
+            c.setLoc(background.objectBackground[cLocX][cLocY]);
+            c.createSprite(c.pokemonName);
+            c.deleted = false;
+        }
         if(d.deleted == false)
         {
             d.draw(g);
+        }
+        else
+        {
+            if(dLocX > 800 || dLocX < 500)
+            {
+                dLocX += 65;
+                dLocY += 87;
+                if(dName == 0)
+                {
+                    dName += 4;
+                }
+                else
+                {
+                    dName -= 2;
+
+                    if(dName < 0)
+                    {
+                        dName = 11;
+                    }
+                }
+            }
+            else
+            {
+                dLocX += 23;
+                dLocY += 345;
+                if(dName == 0)
+                {
+                    bName += 1;
+                }
+                else
+                {
+                    bName -= 1;
+
+                    if(dName < 0)
+                    {
+                        dName = 12;
+                    }
+                }
+            }
+
+            if(dLocX <= 100 || dLocY <= 100 || dLocX >= 900 || dLocY >= 900 || ((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580)))
+            {
+                dLocX = 300;
+                dLocY = 124;
+            }
+
+            d.pokemonName = pokemen[dName];
+            d.setLoc(background.objectBackground[dLocX][dLocY]);
+            d.createSprite(d.pokemonName);
+            d.deleted = false;
         }
         if(e.deleted == false)
         {
             e.draw(g);
         }
-        if(f.deleted == false)
+        else
         {
-            f.draw(g);
-        }
-        if(h.deleted == false)
-        {
-            h.draw(g);
-        }
-        if(i.deleted == false)
-        {
-            i.draw(g);
-        }
-        if(j.deleted == false)
-        {
-            j.draw(g);
-        }
-        if(k.deleted == false)
-        {
-            k.draw(g);
+            if(eLocX > 400 || eLocX < 135)
+            {
+                eLocX += 34;
+                eLocY += 76;
+                if(eName == 0)
+                {
+                    eName += 3;
+                }
+                else
+                {
+                    eName -= 1;
+
+                    if(eName < 0)
+                    {
+                        eName = 10;
+                    }
+                }
+            }
+            else
+            {
+                eLocX += 63;
+                eLocY += 23;
+                if(eName == 0)
+                {
+                    eName += 12;
+                }
+                else
+                {
+                    eName -= 2;
+
+                    if(eName < 0)
+                    {
+                        eName = 10;
+                    }
+                }
+            }
+
+            if(eLocX <= 100 || eLocY <= 100 || eLocX >= 900 || eLocY >= 900 || ((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580)))
+            {
+                eLocX = 200;
+                eLocY = 124;
+            }
+
+            e.pokemonName = pokemen[eName];
+            e.setLoc(background.objectBackground[eLocX][eLocY]);
+            e.createSprite(b.pokemonName);
+            e.deleted = false;
         }
         player.draw(g);
         integerToString << timer;
@@ -268,6 +470,12 @@ int main(int argc, char ** argv)
         clock.createSprite(timerString);
         integerToString.str("");
         clock.draw(g);
+        scoreString = score + ".txt";
+        integerToString2 << score;
+        scoreString = integerToString2.str() + ".txt";
+        scoreMessage.createSprite(scoreString);
+        integerToString2.str("");
+        scoreMessage.draw(g);
         g.update();
 
         if(g.kbhit()){
@@ -387,7 +595,7 @@ int main(int argc, char ** argv)
                                      frame = 0;
                                  }
                                  break;
-                case SPACE: ball.createSprite();
+                case ' ': ball.createSprite();
                             ball.setLoc(player.loc);
                             dontStop++;
                             break;
@@ -401,6 +609,7 @@ int main(int argc, char ** argv)
                     while(dontStop != 0)
                     {
                         ball.move(direction);
+                        g.update();
                         ball.draw(g);
                         ball.createSprite();
                         player.draw(g);
@@ -412,8 +621,10 @@ int main(int argc, char ** argv)
                             g.Sleep(300);
                             g.quitSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
                             dontStop = 0;
-                            messageShow = true;
                             a.specialErase(g);
+                            a.deleted = true;
+                            messageShow = true;
+                            g.update();
                         }
                         if(ballCollide(ball, b) == true)
                         {
@@ -421,8 +632,43 @@ int main(int argc, char ** argv)
                             g.Sleep(300);
                             g.quitSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
                             dontStop = 0;
-                            messageShow = true;
                             b.specialErase(g);
+                            b.deleted = true;
+                            messageShow = true;
+                            g.update();
+                        }
+                        if(ballCollide(ball, c) == true)
+                        {
+                            g.playSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            g.Sleep(300);
+                            g.quitSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            dontStop = 0;
+                            c.specialErase(g);
+                            c.deleted = true;
+                            messageShow = true;
+                            g.update();
+                        }
+                        if(ballCollide(ball, d) == true)
+                        {
+                            g.playSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            g.Sleep(300);
+                            g.quitSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            dontStop = 0;
+                            d.specialErase(g);
+                            d.deleted = true;
+                            messageShow = true;
+                            g.update();
+                        }
+                        if(ballCollide(ball, e) == true)
+                        {
+                            g.playSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            g.Sleep(300);
+                            g.quitSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+                            dontStop = 0;
+                            e.specialErase(g);
+                            e.deleted = true;
+                            messageShow = true;
+                            g.update();
                         }
                         if(ball.loc.x <= 100 || ball.loc.y <= 100 || ball.loc.x >= 900 || ball.loc.y >= 900)
                         {
@@ -439,11 +685,12 @@ int main(int argc, char ** argv)
                     scoreString = score + ".txt";
                     integerToString2 << score;
                     scoreString = integerToString2.str() + ".txt";
+                    scoreMessage.createSprite(scoreString);
+                    scoreMessage.draw(g);
                     integerToString2.str("");
                     ball.specialErase(g);
-                    a.deleted = true;
-                    b.deleted = true;
                     g.update();
+                    messageShow = false;
                 }
 
     }
@@ -463,75 +710,6 @@ void setNamesFileName(string a[256])
     indexFile.close();
 }
 
-int randomSystemTime(int a)
-{
-    int random;
-
-    srand(time(NULL));
-    random = rand() % a;
-
-    return random;
-}
-
-int randomProcessTicks(int a)
-{
-    int random;
-
-    srand(SDL_GetTicks());
-    random = rand() % a;
-
-    return random;
-}
-
-void checkPosition(Pokemon a, Background c)
-{
-    if(a.loc.x <= 180 || a.loc.y <= 180 || a.loc.x >= 780 || a.loc.y >= 520)
-    {
-        while(a.loc.x <= 180 || a.loc.y <= 180 || a.loc.x >= 780 || a.loc.y >= 520)
-        {
-            a.setLoc(c.objectBackground[randomProcessTicks(1000)][randomSystemTime(1000)]);
-        }
-    }
-
-    cout << a.loc.x << " " << a.loc.y << endl;
-}
-
-void checkPositionEqual(Pokemon a, Pokemon b, Background c)
-{
-    bool stop = false;
-
-    for(int i = 0; i < 80; i++)
-    {
-        for(int f = 0; f < 80; f++)
-        {
-            if(b.loc.x + i == a.loc.x + i && b.loc.y + f == a.loc.y + f)
-            {
-                while(b.loc.x + i == a.loc.x + i && b.loc.y + f == a.loc.y + f)
-                {
-                    a.setLoc(c.objectBackground[randomSystemTime(1000)][randomSystemTime(1000)]);
-                }
-                stop = true;
-                break;
-            }
-        }
-        if(stop == true)
-        {
-            break;
-        }
-    }
-}
-
-void checkNameEqual(Pokemon a, Pokemon b, string c[])
-{
-    if(a.pokemonName == b.pokemonName)
-    {
-        while(a.pokemonName == b.pokemonName)
-        {
-            b.pokemonName = c[randomSystemTime(16)];
-        }
-    }
-}
-
 bool ballCollide(Pokeball a, Pokemon b)
 {
     bool collide;
@@ -540,34 +718,33 @@ bool ballCollide(Pokeball a, Pokemon b)
     int g = 0;
     int h = 0;
 
-    for(int i = 0; i < b.dimension1; i++)
+    for(int p = 0; p < 10; p++)
     {
-        for(int f = 0; f < b.dimension2; f++)
+        for(int i = 0; i < b.dimension1; i++)
         {
-            if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
+            while(g < 20)
             {
-                collide = true;
-                stop = true;
-                break;
-            }
-            else
-            {
-                collide = false;
-            }
-
-            if(g <= 20)
-            {
+                for(int f = 0; f < b.dimension2; f++)
+                {
+                    while(h < 20)
+                    {
+                        if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
+                        {
+                            collide = true;
+                            stop = true;
+                            break;
+                        }
+                        h++;
+                    }
+                    h = 0;
+                }
                 g++;
             }
-        }
-        if(stop == true)
-        {
-            break;
-        }
-
-        if(h <= 20)
-        {
-            h++;
+            if(stop == true)
+            {
+                break;
+            }
+            g = 0;
         }
     }
     return collide;

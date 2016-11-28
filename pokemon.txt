@@ -2,7 +2,6 @@ pikachu.txt
 bulbasaur.txt
 caterpie.txt
 charmander.txt
-cubone.txt
 gastly.txt
 growlithe.txt
 koffing.txt

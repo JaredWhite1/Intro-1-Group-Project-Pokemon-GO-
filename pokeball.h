@@ -7,7 +7,7 @@ class Pokeball
 {
     private:
         Point oldLoc;
-        double speed;
+        int speed;
         int R, G, B;
         Color ball[20][20];
     public:
@@ -28,7 +28,7 @@ Pokeball :: Pokeball()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 8;
+    speed = 15;
 }
 
 void Pokeball:: createSprite()

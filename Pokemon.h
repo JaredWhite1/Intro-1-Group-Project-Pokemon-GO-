@@ -106,8 +106,6 @@ void Pokemon::specialErase(SDL_Plotter& g)
             g.plotPixel(loc.x +x,loc.y+y,background[loc.x + x][loc.y + y].R,background[loc.x + x][loc.y + y].G,background[loc.x + x][loc.y + y].B);
         }
     }
-    loc.x = 12000;
-    loc.y = 12000;
 }
 
 

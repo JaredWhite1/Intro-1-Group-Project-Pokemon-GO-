@@ -14,8 +14,8 @@
 //#include <SDL2/SDL_thread.h>
 
 //Windows Library
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 #include <string.h>
 #include <iostream>
@@ -28,7 +28,6 @@ const char UP_ARROW    = 1;
 const char DOWN_ARROW  = 2;
 const char LEFT_ARROW  = 3;
 const char RIGHT_ARROW = 4;
-const char SPACE = 5;
 const int RED_SHIFT   = 65536;
 const int GREEN_SHIFT = 256;
 const int BLUE_SHIFT  = 1;
@@ -184,11 +183,12 @@ public:
 		if(currentKeyStates[SDL_SCANCODE_8]) key = '8';
 		if(currentKeyStates[SDL_SCANCODE_9]) key = '9';
 		if(currentKeyStates[SDL_SCANCODE_0]) key = '0';
-		if(currentKeyStates[SDL_SCANCODE_SPACE]) key = SPACE;
+		if(currentKeyStates[SDL_SCANCODE_SPACE]) key = ' ';
 		if(currentKeyStates[SDL_SCANCODE_DOWN])  key = DOWN_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_LEFT])  key = LEFT_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_RIGHT]) key = RIGHT_ARROW;
+		if(currentKeyStates[SDL_SCANCODE_RETURN]) key = SDL_SCANCODE_RETURN;
 		if(currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
 
     	return key;
@@ -221,6 +221,10 @@ public:
 				p->threadID = SDL_CreateThread( Sound, "SoundThread", (void*)p );
 				SDL_DetachThread(p->threadID);
 		}
+    }
+
+    void setQuit(bool flag){
+    	this->quit = flag;
     }
 
     void playSound(string sound){

@@ -11,7 +11,7 @@ class Message2
         Point loc;
         Point oldLoc;
         int dimension1, dimension2, R, G, B;
-        Color message2[48][135];
+        Color message2[111][135];
     public:
         vector <vector<Point> > background;
         Message2();
@@ -32,7 +32,7 @@ void Message2:: createSprite(string a)
 {
     ifstream messageFile2;
     messageFile2.open(a.c_str());
-    dimension1 = 48;
+    dimension1 = 111;
     dimension2 = 135;
     for(int r = 0; r < dimension1; r++){
         for(int c = 0; c < dimension2; c++){

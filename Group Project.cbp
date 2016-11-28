@@ -31,7 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="E:/Baylor/First Year/Semester 1/CSI/mingw_dev_lib/include/SDL2" />
+			<Add directory="E:/Baylor/First Year/Semester 1/CSI/mingw_dev_lib/mixer/include/SDL2" />
 		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer" />
+			<Add directory="E:/Baylor/First Year/Semester 1/CSI/mingw_dev_lib/lib" />
+			<Add directory="E:/Baylor/First Year/Semester 1/CSI/mingw_dev_lib/mixer/lib" />
+		</Linker>
 		<Unit filename="Pokemon.h" />
 		<Unit filename="SDL_Plotter.h">
 			<Option target="&lt;{~None~}&gt;" />
