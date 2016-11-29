@@ -16,6 +16,7 @@ class Player
         void scopePlayerBackground(vector <vector<Point> > scopePlayerBackground);
         void draw(SDL_Plotter&);
         void erase(SDL_Plotter&);
+        void specialErase(SDL_Plotter&);
         void move(DIR);
         void setLoc(Point);
         void createSprite(string a);
@@ -77,6 +78,15 @@ void Player::erase(SDL_Plotter& g)
                 g.plotPixel(oldLoc.x +x,oldLoc.y+y,background[oldLoc.x + x][oldLoc.y + y].R,background[oldLoc.x + x][oldLoc.y + y].G,background[oldLoc.x + x][oldLoc.y + y].B);
         }
      }
+}
+
+void Player::specialErase(SDL_Plotter& g)
+{
+    for(int y= 0;y<dimension1;y++){
+        for(int x =0;x<dimension2;x++){
+            g.plotPixel(loc.x +x,loc.y+y,background[loc.x + x][loc.y + y].R,background[loc.x + x][loc.y + y].G,background[loc.x + x][loc.y + y].B);
+        }
+    }
 }
 
 void Player::move(DIR d)

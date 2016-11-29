@@ -30,14 +30,14 @@ class Background
     public:
         vector <vector<Point> > objectBackground;
         void drawBackground(SDL_Plotter& g);
-        void setBackground();
+        void setBackground(string a);
 };
 
-void Background::setBackground()
+void Background::setBackground(string a)
 {
     objectBackground.resize(1000, vector <Point>(1000));
     ifstream backgroundImage;
-    backgroundImage.open("background.txt");
+    backgroundImage.open(a.c_str());
 
     for(int i = 0; i < 1000; i++)
     {

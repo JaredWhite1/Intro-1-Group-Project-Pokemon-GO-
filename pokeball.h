@@ -28,7 +28,7 @@ Pokeball :: Pokeball()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
-    speed = 15;
+    speed = 20;
 }
 
 void Pokeball:: createSprite()
