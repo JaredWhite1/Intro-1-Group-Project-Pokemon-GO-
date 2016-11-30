@@ -3,7 +3,6 @@
 #include <fstream>
 #include <algorithm>
 #include <vector>
-#include <ctime>
 #include <cstdlib>
 #include "SDL_Plotter.h"
 #include "Pokemon.h"
@@ -11,7 +10,6 @@
 #include "player.h"
 #include "pokeball.h"
 #include "message.h"
-#include "message1.h"
 #include "message2.h"
 
 using namespace std;
@@ -240,10 +238,20 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(aLocX <= 100 || aLocY <= 100 || aLocX >= 900 || aLocY >= 900 || ((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580)))
+            if(aLocX <= 100 || aLocY <= 100)
+            {
+                aLocX += 432;
+                aLocY += 623;
+            }
+            else if(aLocX >= 900 || aLocY >= 900)
             {
                 aLocX -= 432;
                 aLocY -= 623;
+            }
+            else if((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+            {
+                aLocX -= 300;
+                aLocY -= 300;
             }
 
 
@@ -295,10 +303,20 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(bLocX <= 100 || bLocY <= 100 || bLocX >= 900 || bLocY >= 900 || ((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580)))
+            if(bLocX <= 100 || bLocY <= 100)
             {
-                bLocX -= 500;
-                bLocY -= 124;
+                bLocX += 432;
+                bLocY += 623;
+            }
+            else if(bLocX >= 900 || bLocY >= 900)
+            {
+                bLocX -= 432;
+                bLocY -= 623;
+            }
+            else if((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && aLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+            {
+                bLocX -= 300;
+                bLocY -= 300;
             }
 
             b.pokemonName = pokemen[bName];
@@ -349,10 +367,20 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(cLocX <= 100 || cLocY <= 100 || cLocX >= 900 || cLocY >= 900 || ((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580)))
+            if(cLocX <= 100 || cLocY <= 100)
             {
-                cLocX -= 400;
-                cLocY -= 124;
+                cLocX += 432;
+                cLocY += 623;
+            }
+            else if(cLocX >= 900 || cLocY >= 900)
+            {
+                cLocX -= 432;
+                cLocY -= 623;
+            }
+            else if((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+            {
+                cLocX -= 300;
+                cLocY -= 300;
             }
 
             c.pokemonName = pokemen[cName];
@@ -403,10 +431,20 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(dLocX <= 100 || dLocY <= 100 || dLocX >= 900 || dLocY >= 900 || ((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580)))
+            if(dLocX <= 100 || dLocY <= 100)
+            {
+                dLocX += 432;
+                dLocY += 623;
+            }
+            else if(dLocX >= 900 || dLocY >= 900)
+            {
+                dLocX -= 432;
+                dLocY -= 623;
+            }
+            else if((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
             {
                 dLocX -= 300;
-                dLocY -= 124;
+                dLocY -= 300;
             }
 
             d.pokemonName = pokemen[dName];
@@ -457,10 +495,20 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(eLocX <= 100 || eLocY <= 100 || eLocX >= 900 || eLocY >= 900 || ((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580)))
+            if(eLocX <= 100 || eLocY <= 100)
             {
-                eLocX -= 200;
-                eLocY -= 124;
+                eLocX += 432;
+                aLocY += 623;
+            }
+            else if(eLocX >= 900 || eLocY >= 900)
+            {
+                eLocX -= 432;
+                eLocY -= 623;
+            }
+            else if((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+            {
+                eLocX -= 300;
+                eLocY -= 300;
             }
 
             e.pokemonName = pokemen[eName];
