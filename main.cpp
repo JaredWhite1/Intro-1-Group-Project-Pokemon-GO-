@@ -205,7 +205,7 @@ int main(int argc, char ** argv)
             {
                 aLocX += 145;
                 aLocY += 98;
-                if(aName == 0)
+                if(aName <= 0)
                 {
                     aName += 2;
                 }
@@ -223,7 +223,7 @@ int main(int argc, char ** argv)
             {
                 aLocX += 163;
                 aLocY += 223;
-                if(bName == 0)
+                if(bName <= 0)
                 {
                     aName += 13;
                 }
@@ -238,20 +238,26 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(aLocX <= 100 || aLocY <= 100)
+            while(aLocX <= 100)
             {
-                aLocX += 432;
-                aLocY += 623;
+                aLocX += 220;
             }
-            else if(aLocX >= 900 || aLocY >= 900)
+            while(aLocY <= 100)
             {
-                aLocX -= 432;
-                aLocY -= 623;
+                aLocY += 220;
             }
-            else if((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+            while(aLocX >= 900)
             {
-                aLocX -= 300;
-                aLocY -= 300;
+                aLocX -= 220;
+            }
+            while(aLocY >= 900)
+            {
+                aLocY -= 220;
+            }
+            while((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+            {
+                aLocX -= 250;
+                aLocY -= 250;
             }
 
 
@@ -270,7 +276,7 @@ int main(int argc, char ** argv)
             {
                 bLocX += 134;
                 bLocY += 276;
-                if(bName == 0)
+                if(bName <= 0)
                 {
                     bName += 3;
                 }
@@ -288,7 +294,7 @@ int main(int argc, char ** argv)
             {
                 bLocX += 263;
                 bLocY += 323;
-                if(bName == 0)
+                if(bName <= 0)
                 {
                     bName += 12;
                 }
@@ -303,20 +309,26 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(bLocX <= 100 || bLocY <= 100)
+            while(bLocX <= 100)
             {
-                bLocX += 432;
-                bLocY += 623;
+                bLocX += 220;
             }
-            else if(bLocX >= 900 || bLocY >= 900)
+            while(bLocY <= 100)
             {
-                bLocX -= 432;
-                bLocY -= 623;
+                bLocY += 220;
             }
-            else if((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && aLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+            while(bLocX >= 900)
             {
-                bLocX -= 300;
-                bLocY -= 300;
+                bLocX -= 220;
+            }
+            while(bLocY >= 900)
+            {
+                bLocY -= 220;
+            }
+            while((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+            {
+                bLocX -= 250;
+                bLocY -= 250;
             }
 
             b.pokemonName = pokemen[bName];
@@ -334,9 +346,12 @@ int main(int argc, char ** argv)
             {
                 cLocX += 156;
                 cLocY += 523;
-                if(cName == 0)
+                if(cName <= 0)
                 {
-                    cName += 2;
+                    while(cName <= 0)
+                    {
+                        cName += 2;
+                    }
                 }
                 else
                 {
@@ -352,7 +367,7 @@ int main(int argc, char ** argv)
             {
                 cLocX += 168;
                 cLocY += 234;
-                if(cName == 0)
+                if(cName <= 0)
                 {
                     cName += 12;
                 }
@@ -367,20 +382,26 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(cLocX <= 100 || cLocY <= 100)
+            while(cLocX <= 100)
             {
-                cLocX += 432;
-                cLocY += 623;
+                cLocX += 220;
             }
-            else if(cLocX >= 900 || cLocY >= 900)
+            while(cLocY <= 100)
             {
-                cLocX -= 432;
-                cLocY -= 623;
+                cLocY += 220;
             }
-            else if((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+            while(cLocX >= 900)
             {
-                cLocX -= 300;
-                cLocY -= 300;
+                cLocX -= 220;
+            }
+            while(cLocY >= 900)
+            {
+                cLocY -= 220;
+            }
+            while((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+            {
+                cLocX -= 250;
+                cLocY -= 250;
             }
 
             c.pokemonName = pokemen[cName];
@@ -398,7 +419,7 @@ int main(int argc, char ** argv)
             {
                 dLocX += 165;
                 dLocY += 187;
-                if(dName == 0)
+                if(dName <= 0)
                 {
                     dName += 4;
                 }
@@ -416,7 +437,7 @@ int main(int argc, char ** argv)
             {
                 dLocX += 23;
                 dLocY += 345;
-                if(dName == 0)
+                if(dName <= 0)
                 {
                     dName += 1;
                 }
@@ -431,20 +452,26 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(dLocX <= 100 || dLocY <= 100)
+            while(dLocX <= 100)
             {
-                dLocX += 432;
-                dLocY += 623;
+                dLocX += 220;
             }
-            else if(dLocX >= 900 || dLocY >= 900)
+            while(dLocY <= 100)
             {
-                dLocX -= 432;
-                dLocY -= 623;
+                dLocY += 220;
             }
-            else if((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
+            while(dLocX >= 900)
             {
-                dLocX -= 300;
-                dLocY -= 300;
+                dLocX -= 220;
+            }
+            while(dLocY >= 900)
+            {
+                dLocY -= 220;
+            }
+            while((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
+            {
+                dLocX -= 250;
+                dLocY -= 250;
             }
 
             d.pokemonName = pokemen[dName];
@@ -462,7 +489,7 @@ int main(int argc, char ** argv)
             {
                 eLocX += 34;
                 eLocY += 76;
-                if(eName == 0)
+                if(eName <= 0)
                 {
                     eName += 3;
                 }
@@ -480,7 +507,7 @@ int main(int argc, char ** argv)
             {
                 eLocX += 163;
                 eLocY += 323;
-                if(eName == 0)
+                if(eName <= 0)
                 {
                     eName += 12;
                 }
@@ -495,20 +522,26 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(eLocX <= 100 || eLocY <= 100)
+            while(eLocX <= 100)
             {
-                eLocX += 432;
-                aLocY += 623;
+                eLocX += 220;
             }
-            else if(eLocX >= 900 || eLocY >= 900)
+            while(eLocY <= 100)
             {
-                eLocX -= 432;
-                eLocY -= 623;
+                eLocY += 220;
             }
-            else if((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+            while(eLocX >= 900)
             {
-                eLocX -= 300;
-                eLocY -= 300;
+                eLocX -= 220;
+            }
+            while(eLocY >= 900)
+            {
+                eLocY -= 220;
+            }
+            while((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+            {
+                eLocX -= 250;
+                eLocY -= 250;
             }
 
             e.pokemonName = pokemen[eName];
