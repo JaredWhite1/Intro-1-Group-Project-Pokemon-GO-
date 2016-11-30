@@ -238,28 +238,42 @@ int main(int argc, char ** argv)
                 }
             }
 
-            while(aLocX <= 100)
+            if(aLocX <= 100)
             {
-                aLocX += 220;
+                while(aLocX <= 100)
+                {
+                    aLocX += 120;
+                }
             }
-            while(aLocY <= 100)
+            if(aLocY <= 100)
             {
-                aLocY += 220;
+                while(aLocY <= 100)
+                {
+                    aLocY += 320;
+                }
             }
-            while(aLocX >= 900)
+            if(aLocX >= 900)
             {
-                aLocX -= 220;
+                while(aLocX >= 900)
+                {
+                    aLocX -= 220;
+                }
             }
-            while(aLocY >= 900)
+            if(aLocY >= 900)
             {
-                aLocY -= 220;
+                while(aLocY >= 900)
+                {
+                    aLocY -= 120;
+                }
             }
-            while((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+            if((aLocX >= 732 && aLocY <= 612) && (aLocX <= 867 && aLocY <= 612) && (aLocX <= 867 && aLocY >= 835) && (aLocX >= 732 && aLocY >= 835))
             {
-                aLocX -= 250;
-                aLocY -= 250;
+                while((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+                {
+                    aLocX -= 250;
+                    aLocY -= 250;
+                }
             }
-
 
             a.pokemonName = pokemen[aName];
             a.setLoc(background.objectBackground[aLocX][aLocY]);
@@ -309,26 +323,41 @@ int main(int argc, char ** argv)
                 }
             }
 
-            while(bLocX <= 100)
+            if(bLocX <= 100)
             {
-                bLocX += 220;
+                while(bLocX <= 100)
+                {
+                    bLocX += 120;
+                }
             }
-            while(bLocY <= 100)
+            if(bLocY <= 100)
             {
-                bLocY += 220;
+                while(bLocY <= 100)
+                {
+                    bLocY += 320;
+                }
             }
-            while(bLocX >= 900)
+            if(bLocX >= 900)
             {
-                bLocX -= 220;
+                while(bLocX >= 900)
+                {
+                    bLocX -= 220;
+                }
             }
-            while(bLocY >= 900)
+            if(bLocY >= 900)
             {
-                bLocY -= 220;
+                while(bLocY >= 900)
+                {
+                    bLocY -= 120;
+                }
             }
-            while((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+            if((bLocX >= 732 && bLocY <= 612) && (bLocX <= 867 && bLocY <= 612) && (bLocX <= 867 && bLocY >= 835) && (bLocX >= 732 && bLocY >= 835))
             {
-                bLocX -= 250;
-                bLocY -= 250;
+                while((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+                {
+                    bLocX -= 250;
+                    bLocY -= 250;
+                }
             }
 
             b.pokemonName = pokemen[bName];
@@ -382,26 +411,42 @@ int main(int argc, char ** argv)
                 }
             }
 
-            while(cLocX <= 100)
+            if(cLocX <= 100)
             {
-                cLocX += 220;
+
+                while(cLocX <= 100)
+                {
+                    cLocX += 120;
+                }
             }
-            while(cLocY <= 100)
+            if(cLocY <= 100)
             {
-                cLocY += 220;
+                while(cLocY <= 100)
+                {
+                    cLocY += 320;
+                }
             }
-            while(cLocX >= 900)
+            if(cLocX >= 900)
             {
-                cLocX -= 220;
+                while(cLocX >= 900)
+                {
+                    cLocX -= 220;
+                }
             }
-            while(cLocY >= 900)
+            if(cLocY >= 900)
             {
-                cLocY -= 220;
+                while(cLocY >= 900)
+                {
+                    cLocY -= 120;
+                }
             }
-            while((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+            if((cLocX >= 732 && cLocY <= 612) && (cLocX <= 867 && cLocY <= 612) && (cLocX <= 867 && cLocY >= 835) && (cLocX >= 732 && cLocY >= 835))
             {
-                cLocX -= 250;
-                cLocY -= 250;
+                while((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+                {
+                    cLocX -= 250;
+                    cLocY -= 250;
+                }
             }
 
             c.pokemonName = pokemen[cName];
@@ -415,7 +460,7 @@ int main(int argc, char ** argv)
         }
         else
         {
-            if(dLocX > 700 || dLocX < 500)
+            if(dLocX < 700 || dLocX > 300)
             {
                 dLocX += 165;
                 dLocY += 187;
@@ -452,26 +497,41 @@ int main(int argc, char ** argv)
                 }
             }
 
-            while(dLocX <= 100)
+            if(dLocX <= 100)
             {
-                dLocX += 220;
+                while(dLocX <= 100)
+                {
+                    dLocX += 120;
+                }
             }
-            while(dLocY <= 100)
+            if(dLocY <= 100)
             {
-                dLocY += 220;
+                while(dLocY <= 100)
+                {
+                    dLocY += 320;
+                }
             }
-            while(dLocX >= 900)
+            if(dLocX >= 900)
             {
-                dLocX -= 220;
+                while(dLocX >= 900)
+                {
+                    dLocX -= 220;
+                }
             }
-            while(dLocY >= 900)
+            if(dLocY >= 900)
             {
-                dLocY -= 220;
+                while(dLocY >= 900)
+                {
+                    dLocY -= 120;
+                }
             }
-            while((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
+            if((dLocX >= 732 && dLocY <= 612) && (dLocX <= 867 && dLocY <= 612) && (dLocX <= 867 && dLocY >= 835) && (dLocX >= 732 && dLocY >= 835))
             {
-                dLocX -= 250;
-                dLocY -= 250;
+                while((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
+                {
+                    dLocX -= 250;
+                    dLocY -= 250;
+                }
             }
 
             d.pokemonName = pokemen[dName];
@@ -522,26 +582,41 @@ int main(int argc, char ** argv)
                 }
             }
 
-            while(eLocX <= 100)
+            if(eLocX <= 100)
             {
-                eLocX += 220;
+                while(eLocX <= 100)
+                {
+                    eLocX += 120;
+                }
             }
-            while(eLocY <= 100)
+            if(eLocY <= 100)
             {
-                eLocY += 220;
+                while(eLocY <= 100)
+                {
+                    eLocY += 320;
+                }
             }
-            while(eLocX >= 900)
+            if(eLocX >= 900)
             {
-                eLocX -= 220;
+                while(eLocX >= 900)
+                {
+                    eLocX -= 220;
+                }
             }
-            while(eLocY >= 900)
+            if(eLocY >= 900)
             {
-                eLocY -= 220;
+                while(eLocY >= 900)
+                {
+                    eLocY -= 120;
+                }
             }
-            while((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+            if((eLocX >= 732 && eLocY <= 612) && (eLocX <= 867 && eLocY <= 612) && (eLocX <= 867 && eLocY >= 835) && (eLocX >= 732 && eLocY >= 835))
             {
-                eLocX -= 250;
-                eLocY -= 250;
+                while((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+                {
+                    eLocX -= 250;
+                    eLocY -= 250;
+                }
             }
 
             e.pokemonName = pokemen[eName];
