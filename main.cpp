@@ -756,7 +756,7 @@ int main(int argc, char ** argv)
                                  }
                                  break;
                 case ' ':   ball.createSprite();
-                            ball.setLoc(player.loc);
+                            ball.setLoc(player.getLoc());
                             dontStop++;
                             break;
                     }

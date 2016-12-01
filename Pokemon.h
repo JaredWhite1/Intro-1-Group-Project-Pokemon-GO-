@@ -6,8 +6,6 @@
 
 enum DIR{UP,DOWN,LEFT,RIGHT};
 
-
-
 class Pokemon{
     private:
         Point oldLoc;

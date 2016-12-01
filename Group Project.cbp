@@ -47,6 +47,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="message.h" />
 		<Unit filename="message2.h" />
+		<Unit filename="player.cpp" />
 		<Unit filename="player.h" />
 		<Unit filename="pokeball.h" />
 		<Extensions>

@@ -3,11 +3,12 @@
 #include "SDL_Plotter.h"
 #include <algorithm>
 #include <vector>
+#include <fstream>
 
 struct Point {
-    double x,y;
+    int x,y;
     int R,G,B;
-    Point(int x =0, int y =0);
+    Point(int a = 0, int b = 0);
 };
 
 struct Color{
