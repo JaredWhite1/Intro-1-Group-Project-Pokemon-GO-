@@ -14,8 +14,27 @@ class Player
         Point loc;
         int dimension1, dimension2;
     public:
+    /*
+        Description: This function contructs the Player
+        Return:
+        Precondition: Player class created.
+        Postcondition: Player object constructed.
+        */
         Player();
+        /*
+        Description: This creates a two dimensional vector
+        Return:
+        Precondition: Class Point and background object exist.
+        Postcondition: Two dimensional vector created with corrdinates of Point object.
+        */
         vector <vector<Point> > background;
+
+         /*
+        Description: This creates an array Player of Color class
+        Return:
+        Precondition: Color class exists
+        Postcondition: The player array is created.
+        */
         Color player[76][56];
 
         /*
@@ -157,27 +176,52 @@ class Player
         */
         int getDimension2();
 };
-
+ /*
+        Description: This function gets the dimension2 variable.
+        Return: int
+        Precondition: The dimension2 variable exists.
+        Postcondition: The dimension2 variable is unchanged.
+        */
 Player :: Player()
 {
     setOldLoc(loc);
     speed = 10;
 }
-
+ /*
+        Description: This function sets old location
+        Return:
+        Precondition: The Point object exists
+        Postcondition: The x and y coordinates of Point object are changed
+        */
 void Player::setOldLoc(Point p){
     oldLoc.y = p.y;
     oldLoc.x = p.x;
 }
-
+ /*
+        Description: This function sets the Player speed
+        Return:
+        Precondition: The speed variable exists
+        Postcondition: The speed variable is changed.
+        */
 void Player::setSpeed(int spd){
     speed = spd;
 }
-
+ /*
+        Description: This function sets the dimension x and y cordinates.
+        Return: int
+        Precondition: Player object exits, x and y coordinates exits
+        Postcondition: The dimension2 variable is unchanged.
+        */
 void Player::setDimensions(int x, int y){
     dimension1 = x;
     dimension2 = y;
 }
-
+ /*
+        Description: This function gets the dimension2 variable.
+        Return: int
+        Precondition: The dimension2 variable exists.
+        Postcondition: The dimension2 variable is unchanged.
+        */
 void Player:: createSprite(string a)
 {
     ifstream playerFile;
@@ -194,14 +238,24 @@ void Player:: createSprite(string a)
     playerFile.close();
 }
 
-
+/*
+        Description: This function sets vector for Player background
+        Return:
+        Precondition: Player object created, vector with background size
+        Postcondition: Plotter returned
+        */
 void Player::scopePlayerBackground(vector <vector<Point> > scopePlayerBackground)
 {
     scopePlayerBackground.resize(1000, vector <Point>(1000));
     background.resize(1000, vector <Point>(1000));
     background = scopePlayerBackground;
 }
-
+/*
+        Description: This function plots Player using color values
+        Return:
+        Precondition: Player object created, file with color values exists
+        Postcondition: Plotter returned
+        */
 void Player::draw(SDL_Plotter& g)
 {
     erase(g);
@@ -219,7 +273,12 @@ void Player::draw(SDL_Plotter& g)
         }
     }
 }
-
+/*
+        Description: This function erases Player
+        Return:
+        Precondition: Player object exits and SDL plotter in use.
+        Postcondition: The colors plottered are covered in white
+        */
 void Player::erase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){
@@ -228,7 +287,12 @@ void Player::erase(SDL_Plotter& g)
         }
      }
 }
-
+/*
+        Description: This function erases Player
+        Return:
+        Precondition: Player object exits and SDL plotter in use.
+        Postcondition: The colors plottered are covered in white
+        */
 void Player::specialErase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){
@@ -237,6 +301,14 @@ void Player::specialErase(SDL_Plotter& g)
         }
     }
 }
+
+ /*
+        Description: This function changes speed and direction
+                    of the Pokemon location on screen.
+        Return:
+        Precondition: Player object exists, direction exists
+        Postcondition: Coordinates of Point loc changed, and speed changed
+        */
 
 void Player::move(DIR d)
 {
@@ -270,28 +342,63 @@ void Player::move(DIR d)
     }
 }
 
+ /*
+        Description: This function sets location of Player
+        Return: Point
+        Precondition: Point class exists and Loc exists
+        Postcondition: Loc variable Point set to x and y coordinates
+        */
+
 void Player::setLoc(Point p)
 {
     loc.y = p.y;
     loc.x = p.x;
 }
+ /*
+        Description: This function gets Location of Player
+        Return: Point
+        Precondition: Point class exists and Loc exists
+        Postcondition: Loc variable unchange
+        */
 
 Point Player::getLoc(){
     return loc;
 }
 
+ /*
+        Description: This function gets Old Location of Player
+        Return: Point
+        Precondition: Point class exists and OldLoc exists
+        Postcondition: old Loc variable unchange
+        */
 Point Player::getOldLoc(){
     return oldLoc;
 }
-
+ /*
+        Description: This function gets Dimension 2
+        Return: int
+        Precondition: The Dimension2 variable exists
+        Postcondition: The Dimension2 variable is unchanged.
+        */
 int Player::getSpeed(){
     return speed;
 }
-
+ /*
+        Description: This function gets Dinension 1
+        Return: int
+        Precondition: The Dimension1 variable exists
+        Postcondition: The Dimension1 variable is unchanged.
+        */
 int Player::getDimension1(){
     return dimension1;
 }
 
+ /*
+        Description: This function gets Dinension 2
+        Return: int
+        Precondition: The Dimension2 variable exists
+        Postcondition: The Dimension2 variable is unchanged.
+        */
 int Player::getDimension2(){
     return dimension2;
 }
