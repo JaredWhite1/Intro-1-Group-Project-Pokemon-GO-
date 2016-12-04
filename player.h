@@ -177,10 +177,10 @@ class Player
         int getDimension2();
 };
  /*
-        Description: This function gets the dimension2 variable.
-        Return: int
-        Precondition: The dimension2 variable exists.
-        Postcondition: The dimension2 variable is unchanged.
+        Description: This function constructs player object
+        Return:
+        Precondition: location exists
+        Postcondition: Player set with location and speed 10.
         */
 Player :: Player()
 {
@@ -216,11 +216,12 @@ void Player::setDimensions(int x, int y){
     dimension1 = x;
     dimension2 = y;
 }
- /*
-        Description: This function gets the dimension2 variable.
-        Return: int
-        Precondition: The dimension2 variable exists.
-        Postcondition: The dimension2 variable is unchanged.
+        /*
+        Description:
+            This function creates the sprite and inputs its color info into the player array.
+        Return: void
+        Precondition: The string given is the correct file name.
+        Postcondition: The array is changed.
         */
 void Player:: createSprite(string a)
 {
@@ -238,7 +239,8 @@ void Player:: createSprite(string a)
     playerFile.close();
 }
 
-/*
+
+        /*
         Description: This function sets vector for Player background
         Return:
         Precondition: Player object created, vector with background size
@@ -250,7 +252,7 @@ void Player::scopePlayerBackground(vector <vector<Point> > scopePlayerBackground
     background.resize(1000, vector <Point>(1000));
     background = scopePlayerBackground;
 }
-/*
+        /*
         Description: This function plots Player using color values
         Return:
         Precondition: Player object created, file with color values exists
