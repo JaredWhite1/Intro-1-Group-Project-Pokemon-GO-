@@ -1,3 +1,42 @@
+/*
+* Authors: Jared White, Caleb DeHaan, Eliza Sims, Matt GIles, and Patrick Brennan
+* Assignment Title: Group Project (Pokemon GO)
+* Assignment Description: This program is a game that increments
+*                         score when catching pokemon with a pokeball
+* Due Date: 12/5/2016
+* Date Created: 11/14/2016
+* Date Last Modified: 12/1/2016
+ */
+
+ /*
+ * Data Abstraction:
+ *      Create 12 booleans to limit the amount of times the clock can be decremented
+ *      Create a boolean to ask if the game needs the quit screen or not
+ *      Create 5 pokemon objects
+ *      Create a player, background, message for the clock, and message2 for the score objects.
+ *      Create 2 integers to spool for the current process run time
+ *      Create a 2 counter integers to decrement as 10 seconds passes and to increment by 100 as pokemon are caught
+ *      Create 2 strings to hold file names
+ *      Create a plotter object
+ *      Create 10 integers to dictate pokemon location
+ *      Create an array of strings to hold file names of the pokemons
+ *      Initialize 2 string streams to convert the counters to strings
+ *      Create 5 integers to define pokemon identity
+ * Input:
+ *      The user can input with the spacebar to shoot pokeballs and the arrow keys to move.
+ *      All sprites and the background are created from input file streams that hold dimensions and RGB values
+ * Process:
+ *      While the game isn't quit and the user still has time and hasn't score over 2000 points, the user "moves" the
+ *      player, which is just a complex process of using point locations and the background's RGB values stored in a vector to redraw pixels,
+ *      and attempts to catch pokemon by shooting pokeballs at them, which erases the pokeball and pokemon, plays a sound, and increments score by 100.
+ *      The pokemon are redrawn in a different location when caught and the clock counts down as 10 seconds passes.
+ * Output:
+ *      The plotter draws the sprites and backgrounds using the RGB values stored in a vector and arrays.
+ * Assumptions:
+ *      The files used have valid values and don't exceed or underestimate the dimensions provided.
+ *      The user knows the controls and rules (provided in users guide).
+ */
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -14,12 +53,43 @@
 
 using namespace std;
 
+
+//**************************************************************
+// description: Set the array values to the pokemon filenames  *
+// return: Void (nothing)                                      *
+// precondition: The filenames stored in pokemon.txt are valid *
+// postcondition: The array of strings with the file names     *
+//                is filled with the file names                *
+//**************************************************************
 void setNamesFileName(string a[]);
+
+
+//************************************************************
+// description: Set of instructions for when a pokemon is    *
+//              caught                                       *
+// return: void (nothing)                                    *
+// precondition: The pokeball has collided with a pokemon    *
+// postcondition: A sound is played, score is incremented,   *
+//                and the pokeball and pokemon are erased    *
+//                                                           *
+//************************************************************
 void catchPokemon(SDL_Plotter& g, Pokemon& a, int& dontStop, bool& messageShow);
+
+
+//************************************************************
+// description: Test whether or not the pokemon and pokeball *
+//              collides or not                              *
+// return: Boolean                                           *
+// precondition:  The pokeball and pokemon objects exist     *
+// postcondition: A boolean that says if the pokemon is in   *
+//                the same loc as the pokeball is returned   *
+//************************************************************
 bool ballCollide(Pokeball a, Pokemon b);
 
 int main(int argc, char ** argv)
 {
+    //These booleans were created since the division of the current time variable creates multiples of the same value, so
+    //something had to be created to control decrementation to a singular instance
     bool decremented120 = true;
     bool decremented110 = true;
     bool decremented100 = true;
@@ -33,45 +103,45 @@ int main(int argc, char ** argv)
     bool decremented20 = true;
     bool decremented10 = true;
 
-    bool exit = false;
+    bool exit = false; //The game isn't quit
 
-    int currentTime;
-    int startTime;
-    int timer = 120;
-    bool messageShow = false;
-    int dontStop = 0;
-    int score = 0;
-    string timerString = "120s.txt";
-    string scoreString;
-    int frame = 0;
-    int direction = 1;
-    SDL_Plotter g(1000,1000);
-    Pokemon a;
-    Pokemon b;
-    Pokemon c;
-    Pokemon d;
-    Pokemon e;
-    Background background;
-    Player player;
-    Pokeball ball;
-    Message clock;
-    Message2 scoreMessage;
-    string pokemen[15];
-    stringstream integerToString;
-    stringstream integerToString2;
-    setNamesFileName(pokemen);
+    int currentTime; //Time right now
+    int startTime; //Time since process start
+    int timer = 120; //Timer counter
+    bool messageShow = false; //Don't increment score
+    int dontStop = 0; //Don't create a pokeball
+    int score = 0; //Score is 0
+    string timerString = "120s.txt"; //Clock starts at 120 seconds
+    string scoreString; //Score starts by not displaying anything
+    int frame = 0; //Player is facing downwards to start
+    int direction = 1; //^^^
+    SDL_Plotter g(1000,1000); //Plotter object
+    Pokemon a; //Pokemon objects
+    Pokemon b; //^^^
+    Pokemon c; //^^^
+    Pokemon d; //^^^
+    Pokemon e; //^^^
+    Background background; //Background object
+    Player player; //Player object
+    Pokeball ball; //Pokeball object
+    Message clock; //Clock object
+    Message2 scoreMessage; //Score object
+    string pokemen[15]; //Array of file names
+    stringstream integerToString; //Convert integer to string
+    stringstream integerToString2; //^^^
+    setNamesFileName(pokemen); //File names setting function call
 
-    int aLocX = 200, aLocY = 300;
-    int bLocX = 300, bLocY = 200;
-    int cLocX = 800, cLocY = 100;
-    int dLocX = 345, dLocY = 567;
-    int eLocX = 123, eLocY = 734;
+    int aLocX = 200, aLocY = 300; //Pokemon a is given a location relative to the background
+    int bLocX = 300, bLocY = 200; //Pokemon b is given a location relative to the background
+    int cLocX = 800, cLocY = 100; //Pokemon c is given a location relative to the background
+    int dLocX = 345, dLocY = 567; //Pokemon d is given a location relative to the background
+    int eLocX = 123, eLocY = 734; //Pokemon e is given a location relative to the background
 
-    int aName = 0;
-    int bName = 1;
-    int cName = 2;
-    int dName = 3;
-    int eName = 4;
+    int aName = 0; //Pokemon a is a pikachu to start
+    int bName = 1; //Pokemon b is a bulbasaur to start
+    int cName = 2; //Pokemon c is a caterpie to start
+    int dName = 3; //Pokemon d is a charmander to start
+    int eName = 4; //Pokemon e is a gastly to start
 
     a.pokemonName = pokemen[aName];
     b.pokemonName = pokemen[bName];
@@ -81,12 +151,12 @@ int main(int argc, char ** argv)
 
     char Key;
 
-    background.setBackground("background.txt");
-    background.drawBackground(g);
+    background.setBackground("background.txt"); //The background's dimensions and RGB values are stored in background.txt
+    background.drawBackground(g); //Draw the background
 
-    a.setLoc(background.objectBackground[aLocX][aLocY]);
-    a.scopeBackground(background.objectBackground);
-    a.createSprite(a.pokemonName);
+    a.setLoc(background.objectBackground[aLocX][aLocY]); //Set pokemon a's location to the appropriate coordinates
+    a.scopeBackground(background.objectBackground); //Give pokemon a knowledge of the background vector's existence
+    a.createSprite(a.pokemonName); //Assign pokemon a to its sprite
 
     b.setLoc(background.objectBackground[bLocX][bLocY]);
     b.scopeBackground(background.objectBackground);
@@ -106,7 +176,7 @@ int main(int argc, char ** argv)
 
     player.setLoc(background.objectBackground[500][500]);
     player.scopePlayerBackground(background.objectBackground);
-    player.createSprite("TFD.txt");
+    player.createSprite("TFD.txt"); //Player is facing down to start (design choice)
 
     ball.scopeBallBackground(background.objectBackground);
 
@@ -116,11 +186,11 @@ int main(int argc, char ** argv)
     scoreMessage.scopeMessage2Background(background.objectBackground);
     scoreMessage.setLoc(background.objectBackground[812][827]);
 
-    g.initSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+    g.initSound("Pokemon_Red_2FBlue_2FYellow_GB_Music_-_Pokemon_Cau.wav"); //Initialize the catch noise
 
-    while((!g.getQuit() && timer != 0) && (!g.getQuit() && score != 2000))
+    while((!g.getQuit() && timer != 0) && (!g.getQuit() && score != 2000)) //While the x button isn't hit, the score isn't 2000, and the timer hasn't hit 0
     {
-        startTime = SDL_GetTicks() - 2000;
+        startTime = SDL_GetTicks() - 2000; //Start time is more or less 0 milliseconds
         if(startTime/1000 == 10 && decremented120 == true)
         {
             timer = timer - 10;
@@ -755,10 +825,10 @@ int main(int argc, char ** argv)
                                      frame = 0;
                                  }
                                  break;
-                case ' ':   ball.createSprite();
-                            ball.setLoc(player.getLoc());
-                            dontStop++;
-                            break;
+                case ' ': ball.createSprite();
+                          ball.setLoc(player.getLoc());
+                          dontStop++;
+                          break;
                     }
 
                 }
@@ -883,7 +953,7 @@ void setNamesFileName(string a[256])
 
 void catchPokemon(SDL_Plotter& g, Pokemon& pokemon, int& dontStop, bool& messageShow)
 {
-    g.playSound("Pokemon Red%2FBlue%2FYellow (GB) Music - Pokemon Caught.wav");
+    g.playSound("Pokemon_Red_2FBlue_2FYellow_GB_Music_-_Pokemon_Cau.wav");
     dontStop = 0;
     pokemon.specialErase(g);
     pokemon.deleted = true;
@@ -899,34 +969,31 @@ bool ballCollide(Pokeball a, Pokemon b)
     int g = 0;
     int h = 0;
 
-    for(int p = 0; p < 10; p++)
+    for(int i = 0; i < b.dimension1; i++)
     {
-        for(int i = 0; i < b.dimension1; i++)
+        while(g < 20)
         {
-            while(g < 20)
+            for(int f = 0; f < b.dimension2; f++)
             {
-                for(int f = 0; f < b.dimension2; f++)
+                while(h < 20)
                 {
-                    while(h < 20)
+                    if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
                     {
-                        if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
-                        {
-                            collide = true;
-                            stop = true;
-                            break;
-                        }
-                        h++;
+                        collide = true;
+                        stop = true;
+                        break;
                     }
-                    h = 0;
+                    h++;
                 }
-                g++;
+                h = 0;
             }
-            if(stop == true)
-            {
-                break;
-            }
-            g = 0;
+            g++;
         }
+        if(stop == true)
+        {
+            break;
+        }
+        g = 0;
     }
     return collide;
 }
