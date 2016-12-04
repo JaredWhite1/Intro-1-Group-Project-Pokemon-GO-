@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 
+
 struct Point {
     int x,y;
     int R,G,B;
@@ -18,6 +19,12 @@ struct Color{
     }
 };
 
+        /*
+        Description: This function contructs the Point
+        Return:
+        Precondition: X and Y coordinats exist exist.
+        Postcondition: Point object constructed
+        */
 Point :: Point(int a, int b)
 {
    x= a;
@@ -34,6 +41,12 @@ class Background
         void setBackground(string a);
 };
 
+        /*
+        Description: This function sets vector background size and colors
+        Return:void
+        Precondition: File with correct data exists.
+        Postcondition: Background vector set with color and size.
+        */
 void Background::setBackground(string a)
 {
     objectBackground.resize(1000, vector <Point>(1000));
@@ -52,6 +65,12 @@ void Background::setBackground(string a)
     backgroundImage.close();
 }
 
+ /*
+        Description: This function uses Plotter to draw background
+        Return:void
+        Precondition: G object and SDL plotter exist
+        Postcondition:G object background array modified with colors.
+        */
 void Background::drawBackground(SDL_Plotter& g)
 {
     for(int h = 0; h < 1000; h++)
