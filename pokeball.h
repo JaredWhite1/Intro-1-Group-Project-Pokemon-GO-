@@ -24,6 +24,12 @@ class Pokeball
         void specialErase(SDL_Plotter&);
 };
 
+        /*
+        Description: This function contructs the Pokeball
+        Return:
+        Precondition: Pokeball class created.
+        Postcondition: Pokeball object constructed.
+        */
 Pokeball :: Pokeball()
 {
     oldLoc.x = loc.x;
@@ -31,6 +37,15 @@ Pokeball :: Pokeball()
     speed = 20;
 }
 
+        /*
+        Description:
+            This function creates the Pokeball sprite
+            and reads in color and size from a file in an array.
+
+        Return: void
+        Precondition:  Correct file name.
+        Postcondition: The array contains information for Pokeball.
+        */
 void Pokeball:: createSprite()
 {
     ifstream ballFile;
@@ -48,6 +63,13 @@ void Pokeball:: createSprite()
 }
 
 
+        /*
+        Description:
+            This function differentiates the Pokeball vector from the Background vector.
+        Return: void
+        Precondition: The vector with Point object exists exists.
+        Postcondition: The vector is changed.
+        */
 void Pokeball::scopeBallBackground(vector <vector<Point> > scopeBallBackground)
 {
     scopeBallBackground.resize(1000, vector <Point>(1000));
@@ -55,6 +77,13 @@ void Pokeball::scopeBallBackground(vector <vector<Point> > scopeBallBackground)
     background = scopeBallBackground;
 }
 
+        /*
+        Description:
+            This function draws the Pokeball sprite on the screen.
+        Return: void
+        Precondition: The sprite has been created.
+        Postcondition: The sprite will be drawn to the screen.
+        */
 void Pokeball::draw(SDL_Plotter& g)
 {
     erase(g);
@@ -72,7 +101,13 @@ void Pokeball::draw(SDL_Plotter& g)
         }
     }
 }
-
+        /*
+        Description:
+            This function erases the Pokeball sprite on the screen.
+        Return: void
+        Precondition: The player has been drawn.
+        Postcondition: The sprite will be erased from the screen.
+        */
 void Pokeball::erase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){
@@ -81,7 +116,13 @@ void Pokeball::erase(SDL_Plotter& g)
         }
      }
 }
-
+        /*
+        Description:
+            This function changes the direction of Pokeball
+        Return: void
+        Precondition:Pokeball object created and Pokeball contains coordinates.
+        Postcondition: The direction of Pokeball is changed and speed is changed
+        */
 void Pokeball::move(int d)
 {
     oldLoc.x = loc.x;
@@ -97,7 +138,12 @@ void Pokeball::move(int d)
             break;
     }
 }
-
+/*
+        Description: This function erases Player
+        Return:
+        Precondition: Player object exits and SDL plotter in use.
+        Postcondition: The colors plottered are covered in white
+        */
 void Pokeball::specialErase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){
@@ -108,7 +154,12 @@ void Pokeball::specialErase(SDL_Plotter& g)
      loc.x = 980;
      loc.y = 980;
 }
-
+ /*
+        Description: This function sets location
+        Return:
+        Precondition: The Point object exists
+        Postcondition: The x and y coordinates of Point object are changed
+        */
 void Pokeball::setLoc(Point p)
 {
     loc.y = p.y;
