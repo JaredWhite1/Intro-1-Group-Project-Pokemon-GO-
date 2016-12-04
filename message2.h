@@ -22,12 +22,25 @@ class Message2
         void createSprite(string a);
 };
 
+        /*
+        Description: This function contructs the Message2 object.
+        Return:
+        Precondition: Message2 class created.
+        Postcondition: Message2 object constructed.
+        */
 Message2 :: Message2()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
 }
 
+        /*
+        Description:
+            This function creates the sprite and inputs its color info into the player array.
+        Return: void
+        Precondition: The string given is the correct file name.
+        Postcondition: The array is changed.
+        */
 void Message2:: createSprite(string a)
 {
     ifstream messageFile2;
@@ -45,6 +58,12 @@ void Message2:: createSprite(string a)
 }
 
 
+        /*
+        Description: This function sets vector for Message2 background
+        Return:
+        Precondition: Message2 object created, vector with background size
+        Postcondition: Background position set with message
+        */
 void Message2::scopeMessage2Background(vector <vector<Point> > scopeMessage2Background
                                        )
 {
@@ -53,6 +72,12 @@ void Message2::scopeMessage2Background(vector <vector<Point> > scopeMessage2Back
     background = scopeMessage2Background;
 }
 
+        /*
+        Description: This function draws Message2 using color values
+        Return:
+        Precondition: Message2 object created, array with color values exists
+        Postcondition: Plotter returned
+        */
 void Message2::draw(SDL_Plotter& g)
 {
     for(int y =0;y <dimension1;y++){
@@ -70,6 +95,12 @@ void Message2::draw(SDL_Plotter& g)
     }
 }
 
+        /*
+        Description: This function erases Message2
+        Return:
+        Precondition: Message2 object exits and SDL plotter in use.
+        Postcondition: The colors plotted are covered in white
+        */
 void Message2::erase(SDL_Plotter& g)
 {
     oldLoc.x = loc.x;
@@ -81,6 +112,12 @@ void Message2::erase(SDL_Plotter& g)
      }
 }
 
+        /*
+        Description: This function sets location of Message2 point
+        Return:
+        Precondition: Point class exists and Loc exists
+        Postcondition: Loc variable Point set to x and y coordinates
+        */
 void Message2::setLoc(Point p)
 {
     loc.y = p.y;
