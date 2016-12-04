@@ -27,18 +27,36 @@ class Pokemon{
         void scopeBackground(vector <vector<Point> > scopeBackground);
         void specialErase(SDL_Plotter&);
 };
-
+ /*
+        Description: This function contructs the Pokemon
+        Return:
+        Precondition: Location and Pokemon object exist.
+        Postcondition: Pokemon object constructed
+        */
 Pokemon:: Pokemon()
 {
     oldLoc.x = loc.x;
     oldLoc.y = loc.y;
 }
 
+ /*
+        Description: This function destructs Pokemon object
+        Return:
+        Precondition: Pokemon constructed
+        Postcondition:Object destroyed
+        */
 Pokemon:: ~Pokemon()
 {
 
 }
 
+ /*
+        Description: This function creates Pokemon image
+        Return:
+        Precondition: Pokemon class exits, file contains binary for
+        image of a Pokemon
+        Postcondition: dimensions and colors read into array
+        */
 void Pokemon:: createSprite(string pokemonName)
 {
     ifstream pokemonFile;
@@ -54,7 +72,12 @@ void Pokemon:: createSprite(string pokemonName)
     pokemonFile.close();
 }
 
-
+        /*
+        Description: This function plots using ink
+        Return:
+        Precondition: Pokemon object created, SDL Plotter exits
+        Postcondition: Plotter returned
+        */
 void Pokemon:: draw(SDL_Plotter& g)
 {
     erase(g);
@@ -74,6 +97,13 @@ void Pokemon:: draw(SDL_Plotter& g)
 
 }
 
+ /*
+        Description: This function erases pokemon
+        Return:
+        Precondition: Pokemon object exits and SDL plotter in uses
+        Postcondition: The colors plottered are covered in white
+        */
+
  void Pokemon:: erase(SDL_Plotter& g){
     for(int y= 0;y<dimension1;y++){
         for(int x =0;x<dimension2;x++){
@@ -82,10 +112,23 @@ void Pokemon:: draw(SDL_Plotter& g)
     }
 }
 
+ /*
+        Description: This function sets location
+        Return:
+        Precondition: Pokemon object and point object exist.
+        Postcondition: The coordinates of point are changed
+        */
 void Pokemon:: setLoc(Point p){
     loc.y = p.y;
     loc.x = p.x;
 }
+
+ /*
+        Description: This function sets the size of vector Background
+        Return:
+        Precondition: background Vector exists
+        Postcondition: Background size set by size of vector.
+        */
 
 void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
 {
@@ -93,7 +136,12 @@ void Pokemon::scopeBackground(vector <vector<Point> > scopeBackground)
     background.resize(1000, vector <Point>(1000));
     background = scopeBackground;
 }
-
+ /*
+        Description: This function erases background
+        Return:
+        Precondition: Location of Pokemon exists and location of background
+        Postcondition: Background color changed to Pokemon color
+        */
 void Pokemon::specialErase(SDL_Plotter& g)
 {
     for(int y= 0;y<dimension1;y++){
