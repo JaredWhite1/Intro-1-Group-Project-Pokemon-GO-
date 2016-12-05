@@ -1,5 +1,5 @@
 /*
-* Authors: Jared White, Caleb DeHaan, Eliza Sims, Matt GIles, and Patrick Brennan
+* Authors: Jared White, Caleb DeHaan, Eliza Sims, Matt Giles, and Patrick Brennan
 * Assignment Title: Group Project (Pokemon GO)
 * Assignment Description: This program is a game that increments
 *                         score when catching pokemon with a pokeball

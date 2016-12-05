@@ -1,3 +1,14 @@
+/*
+* Authors: Jared White, Caleb DeHaan, Eliza Sims, Matt Giles, and Patrick Brennan
+* Assignment Title: Group Project (Pokemon GO)
+* Assignment Description: This program is a game that increments
+*                         score when catching pokemon with a pokeball
+* Due Date: 12/5/2016
+* Date Created: 11/14/2016
+* Date Last Modified: 12/1/2016
+ */
+
+
 #ifndef POKEMON_H_INCLUDED
 #define POKEMON_H_INCLUDED
 #include "SDL_Plotter.h"
