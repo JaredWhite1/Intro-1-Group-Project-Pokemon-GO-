@@ -265,25 +265,25 @@ int main(int argc, char ** argv)
         }
 
 
-        if(a.deleted == false)
+        if(a.deleted == false) //If the pokemon hasn't been caught yet
         {
-            a.draw(g);
+            a.draw(g); //Draw the pokemon
         }
         else
         {
-            if(aLocX > 500 || aLocX < 115)
+            if(aLocX > 500 || aLocX < 115) //If the pokemon was located over 500 on the x-axis or under 115
             {
-                aLocX += 145;
-                aLocY += 98;
+                aLocX += 145; //Increment the x-coordinate
+                aLocY += 98; //Increment the y-coordinate
                 if(aName <= 0)
                 {
-                    aName += 2;
+                    aName += 2; //Cycle the pokemon file name
                 }
                 else
                 {
                     aName -= 2;
 
-                    if(bName < 0)
+                    if(bName < 0) //Keep the array in scope
                     {
                         aName = 13;
                     }
@@ -308,47 +308,47 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(aLocX <= 100)
+            if(aLocX <= 150)
             {
-                while(aLocX <= 100)
+                while(aLocX <= 150)
                 {
                     aLocX += 120;
                 }
             }
-            if(aLocY <= 100)
+            if(aLocY <= 150)
             {
-                while(aLocY <= 100)
+                while(aLocY <= 150)
                 {
                     aLocY += 320;
                 }
             }
-            if(aLocX >= 900)
+            if(aLocX >= 850)
             {
-                while(aLocX >= 900)
+                while(aLocX >= 850)
                 {
                     aLocX -= 220;
                 }
             }
-            if(aLocY >= 900)
+            if(aLocY >= 850)
             {
-                while(aLocY >= 900)
+                while(aLocY >= 850)
                 {
-                    aLocY -= 120;
+                    aLocY -= 220;
                 }
             }
-            if((aLocX >= 732 && aLocY <= 612) && (aLocX <= 867 && aLocY <= 612) && (aLocX <= 867 && aLocY >= 835) && (aLocX >= 732 && aLocY >= 835))
+            if((aLocX >= 732 && aLocY >= 612) && (aLocX <= 1027 && aLocY >= 612) && (aLocX >= 732 && aLocY <= 995) && (aLocX <= 1027 && aLocY <= 995))
             {
-                while((aLocX >= 720 && aLocY >= 580) || (aLocX >= 720 && aLocY <= 820) || (aLocX <= 870 && aLocY >= 580))
+                while((aLocX >= 732 && aLocY >= 612) && (aLocX <= 1027 && aLocY >= 612) && (aLocX >= 732 && aLocY <= 995) && (aLocX <= 1027 && aLocY <= 995))
                 {
-                    aLocX -= 250;
-                    aLocY -= 250;
+                    aLocX -= 450;
+                    aLocY -= 450;
                 }
             }
 
-            a.pokemonName = pokemen[aName];
-            a.setLoc(background.objectBackground[aLocX][aLocY]);
-            a.createSprite(a.pokemonName);
-            a.deleted = false;
+            a.pokemonName = pokemen[aName]; //Reset the pokemon file name
+            a.setLoc(background.objectBackground[aLocX][aLocY]); //Reset the location
+            a.createSprite(a.pokemonName); //Reset the sprite
+            a.deleted = false; //Set deleted to false
         }
         if(b.deleted == false)
         {
@@ -393,40 +393,40 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(bLocX <= 100)
+            if(bLocX <= 150)
             {
-                while(bLocX <= 100)
+                while(bLocX <= 150)
                 {
                     bLocX += 120;
                 }
             }
-            if(bLocY <= 100)
+            if(bLocY <= 150)
             {
-                while(bLocY <= 100)
+                while(bLocY <= 150)
                 {
                     bLocY += 320;
                 }
             }
-            if(bLocX >= 900)
+            if(bLocX >= 850)
             {
-                while(bLocX >= 900)
+                while(bLocX >= 850)
                 {
                     bLocX -= 220;
                 }
             }
-            if(bLocY >= 900)
+            if(bLocY >= 850)
             {
-                while(bLocY >= 900)
+                while(bLocY >= 850)
                 {
-                    bLocY -= 120;
+                    bLocY -= 220;
                 }
             }
-            if((bLocX >= 732 && bLocY <= 612) && (bLocX <= 867 && bLocY <= 612) && (bLocX <= 867 && bLocY >= 835) && (bLocX >= 732 && bLocY >= 835))
+            if((bLocX >= 732 && bLocY >= 612) && (bLocX <= 1027 && bLocY >= 612) && (bLocX >= 732 && bLocY <= 995) && (bLocX <= 1027 && bLocY <= 995))
             {
-                while((bLocX >= 720 && bLocY >= 580) || (bLocX >= 720 && bLocY <= 820) || (bLocX <= 870 && bLocY >= 580))
+                while((bLocX >= 732 && bLocY >= 612) && (bLocX <= 1027 && bLocY >= 612) && (bLocX >= 732 && bLocY <= 995) && (bLocX <= 1027 && bLocY <= 995))
                 {
-                    bLocX -= 250;
-                    bLocY -= 250;
+                    bLocX -= 450;
+                    bLocY -= 450;
                 }
             }
 
@@ -481,41 +481,40 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(cLocX <= 100)
+            if(cLocX <= 150)
             {
-
-                while(cLocX <= 100)
+                while(cLocX <= 150)
                 {
                     cLocX += 120;
                 }
             }
-            if(cLocY <= 100)
+            if(cLocY <= 150)
             {
-                while(cLocY <= 100)
+                while(cLocY <= 150)
                 {
                     cLocY += 320;
                 }
             }
-            if(cLocX >= 900)
+            if(cLocX >= 850)
             {
-                while(cLocX >= 900)
+                while(cLocX >= 850)
                 {
                     cLocX -= 220;
                 }
             }
-            if(cLocY >= 900)
+            if(cLocY >= 850)
             {
-                while(cLocY >= 900)
+                while(cLocY >= 850)
                 {
-                    cLocY -= 120;
+                    cLocY -= 220;
                 }
             }
-            if((cLocX >= 732 && cLocY <= 612) && (cLocX <= 867 && cLocY <= 612) && (cLocX <= 867 && cLocY >= 835) && (cLocX >= 732 && cLocY >= 835))
+            if((cLocX >= 732 && cLocY >= 612) && (cLocX <= 1027 && cLocY >= 612) && (cLocX >= 732 && cLocY <= 995) && (cLocX <= 1027 && cLocY <= 995))
             {
-                while((cLocX >= 720 && cLocY >= 580) || (cLocX >= 720 && cLocY <= 820) || (cLocX <= 870 && cLocY >= 580))
+                while((cLocX >= 732 && cLocY >= 612) && (cLocX <= 1027 && cLocY >= 612) && (cLocX >= 732 && cLocY <= 995) && (cLocX <= 1027 && cLocY <= 995))
                 {
-                    cLocX -= 250;
-                    cLocY -= 250;
+                    cLocX -= 450;
+                    cLocY -= 450;
                 }
             }
 
@@ -567,40 +566,40 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(dLocX <= 100)
+            if(dLocX <= 150)
             {
-                while(dLocX <= 100)
+                while(dLocX <= 150)
                 {
                     dLocX += 120;
                 }
             }
-            if(dLocY <= 100)
+            if(dLocY <= 150)
             {
-                while(dLocY <= 100)
+                while(dLocY <= 150)
                 {
                     dLocY += 320;
                 }
             }
-            if(dLocX >= 900)
+            if(dLocX >= 850)
             {
-                while(dLocX >= 900)
+                while(dLocX >= 850)
                 {
                     dLocX -= 220;
                 }
             }
-            if(dLocY >= 900)
+            if(dLocY >= 850)
             {
-                while(dLocY >= 900)
+                while(dLocY >= 850)
                 {
-                    dLocY -= 120;
+                    dLocY -= 220;
                 }
             }
-            if((dLocX >= 732 && dLocY <= 612) && (dLocX <= 867 && dLocY <= 612) && (dLocX <= 867 && dLocY >= 835) && (dLocX >= 732 && dLocY >= 835))
+            if((dLocX >= 732 && dLocY >= 612) && (dLocX <= 1027 && dLocY >= 612) && (dLocX >= 732 && dLocY <= 995) && (dLocX <= 1027 && dLocY <= 995))
             {
-                while((dLocX >= 720 && dLocY >= 580) || (dLocX >= 720 && dLocY <= 820) || (dLocX <= 870 && dLocY >= 580))
+                while((dLocX >= 732 && dLocY >= 612) && (dLocX <= 1027 && dLocY >= 612) && (dLocX >= 732 && dLocY <= 995) && (dLocX <= 1027 && dLocY <= 995))
                 {
-                    dLocX -= 250;
-                    dLocY -= 250;
+                    dLocX -= 450;
+                    dLocY -= 450;
                 }
             }
 
@@ -652,40 +651,40 @@ int main(int argc, char ** argv)
                 }
             }
 
-            if(eLocX <= 100)
+            if(eLocX <= 150)
             {
-                while(eLocX <= 100)
+                while(eLocX <= 150)
                 {
                     eLocX += 120;
                 }
             }
-            if(eLocY <= 100)
+            if(eLocY <= 150)
             {
-                while(eLocY <= 100)
+                while(eLocY <= 150)
                 {
                     eLocY += 320;
                 }
             }
-            if(eLocX >= 900)
+            if(eLocX >= 850)
             {
-                while(eLocX >= 900)
+                while(eLocX >= 850)
                 {
                     eLocX -= 220;
                 }
             }
-            if(eLocY >= 900)
+            if(eLocY >= 850)
             {
-                while(eLocY >= 900)
+                while(eLocY >= 850)
                 {
-                    eLocY -= 120;
+                    eLocY -= 220;
                 }
             }
-            if((eLocX >= 732 && eLocY <= 612) && (eLocX <= 867 && eLocY <= 612) && (eLocX <= 867 && eLocY >= 835) && (eLocX >= 732 && eLocY >= 835))
+            if((eLocX >= 732 && eLocY >= 612) && (eLocX <= 1027 && eLocY >= 612) && (eLocX >= 732 && eLocY <= 995) && (eLocX <= 1027 && eLocY <= 995))
             {
-                while((eLocX >= 720 && eLocY >= 580) || (eLocX >= 720 && eLocY <= 820) || (eLocX <= 870 && eLocY >= 580))
+                while((eLocX >= 732 && eLocY >= 612) && (eLocX <= 1027 && eLocY >= 612) && (eLocX >= 732 && eLocY <= 995) && (eLocX <= 1027 && eLocY <= 995))
                 {
-                    eLocX -= 250;
-                    eLocY -= 250;
+                    eLocX -= 450;
+                    eLocY -= 450;
                 }
             }
 
@@ -694,44 +693,44 @@ int main(int argc, char ** argv)
             e.createSprite(e.pokemonName);
             e.deleted = false;
         }
-        player.draw(g);
-        integerToString << timer;
+        player.draw(g); //Draw the player
+        integerToString << timer; //Convert integer to string
         timerString = integerToString.str() + "s.txt";
         clock.createSprite(timerString);
-        integerToString.str("");
-        clock.draw(g);
-        scoreString = score + ".txt";
-        integerToString2 << score;
+        integerToString.str(""); //Clear the string stream
+        clock.draw(g); //Draw the clock
+        scoreString = score + ".txt"; //Conocate the string
+        integerToString2 << score; //Convert the string to integer
         scoreString = integerToString2.str() + ".txt";
         scoreMessage.createSprite(scoreString);
-        integerToString2.str("");
-        scoreMessage.draw(g);
-        g.update();
+        integerToString2.str(""); //Clear the string stream
+        scoreMessage.draw(g); //Draw the score
+        g.update(); //Update the plotter
 
         if(g.kbhit()){
             Key =g.getKey();
 
             switch(Key){
 
-            case UP_ARROW: direction = 0;
-                           player.createSprite("TFU.txt");
-                           player.move(UP);
+            case UP_ARROW: direction = 0; //Sprite is facing down
+                           player.createSprite("TFU.txt"); //Set the sprite to facing up
+                           player.move(UP); //Move the player up
                            if(frame == 0)
                            {
-                               g.Sleep(100);
-                               player.createSprite("TFU-R.txt");
+                               g.Sleep(100); //Sleep the plotter for a second
+                               player.createSprite("TFU-R.txt"); //Right foot out
                                frame = 1;
                            }
                            else if(frame == 1)
                            {
                                g.Sleep(100);
-                               player.createSprite("TFU.txt");
+                               player.createSprite("TFU.txt"); //No foot out
                                frame = 2;
                            }
                            else if(frame == 2)
                            {
                                g.Sleep(100);
-                               player.createSprite("TFU-L.txt");
+                               player.createSprite("TFU-L.txt"); //Left foot out
                                frame = 3;
                            }
                            else if(frame == 3)
@@ -825,9 +824,9 @@ int main(int argc, char ** argv)
                                      frame = 0;
                                  }
                                  break;
-                case ' ': ball.createSprite();
-                          ball.setLoc(player.getLoc());
-                          dontStop++;
+                case ' ': ball.createSprite(); //Create the pokeball sprite
+                          ball.setLoc(player.getLoc()); //Set the pokeball's location to the player's location
+                          dontStop++; //Start the pokeball's movement
                           break;
                     }
 
@@ -838,15 +837,15 @@ int main(int argc, char ** argv)
                 {
                     while(dontStop != 0)
                     {
-                        ball.move(direction);
-                        ball.draw(g);
-                        ball.createSprite();
-                        player.draw(g);
-                        g.update();
+                        ball.move(direction); //Move the pokeball in the direction the player is facing
+                        ball.draw(g); //Draw the pokeball
+                        ball.createSprite(); //Set the sprite
+                        player.draw(g); //Redraw the player
+                        g.update(); //Update the plotter
 
-                        if(ballCollide(ball, a) == true)
+                        if(ballCollide(ball, a) == true) //If the ball collides with the pokemon a
                         {
-                            catchPokemon(g, a, dontStop, messageShow);
+                            catchPokemon(g, a, dontStop, messageShow); //Catch pokemon function with pokemon a
                         }
                         else if(ballCollide(ball, b) == true)
                         {
@@ -864,7 +863,7 @@ int main(int argc, char ** argv)
                         {
                             catchPokemon(g, e, dontStop, messageShow);
                         }
-                        else if(ball.loc.x <= 100 || ball.loc.y <= 100 || ball.loc.x >= 900 || ball.loc.y >= 900)
+                        else if(ball.loc.x <= 100 || ball.loc.y <= 100 || ball.loc.x >= 900 || ball.loc.y >= 900) //Erase the ball if it exits tree boundaries
                         {
                             dontStop = 0;
                             ball.specialErase(g);
@@ -875,23 +874,22 @@ int main(int argc, char ** argv)
 
                 if(messageShow == true)
                 {
-                    score += 100;
-                    scoreString = score + ".txt";
-                    integerToString2 << score;
+                    score += 100; //Increment score by 100
+                    integerToString2 << score; //Convert integer to string
                     scoreString = integerToString2.str() + ".txt";
                     scoreMessage.createSprite(scoreString);
-                    scoreMessage.draw(g);
-                    integerToString2.str("");
-                    ball.specialErase(g);
-                    g.update();
+                    scoreMessage.draw(g); //Draw score
+                    integerToString2.str(""); //Clear string stream
+                    ball.specialErase(g); //Special erase pokeball
+                    g.update(); //Update the plotter
                     messageShow = false;
                 }
     }
 
     if(exit == false)
     {
-        background.setBackground("endGame.txt");
-        background.drawBackground(g);
+        background.setBackground("endGame.txt"); //Set the background to the end game splash
+        background.drawBackground(g); //Redraw the background
         currentTime = SDL_GetTicks();
 
         a.setLoc(background.objectBackground[aLocX][aLocY]);
