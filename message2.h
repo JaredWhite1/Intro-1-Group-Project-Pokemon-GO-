@@ -158,7 +158,7 @@ void Message2::setOldLoc(Point p)
         Precondition: dimension1 exists
         Postcondition: variable dimension1 is set
         */
-void setDimension1(int d)
+void Message2::setDimension1(int d)
 {
     dimension1 = d;
     return;
@@ -169,7 +169,7 @@ void setDimension1(int d)
         Precondition: dimension2 exists
         Postcondition: variable dimension2 is set
         */
-void setDimension2(int d)
+void Message2::setDimension2(int d)
 {
     dimension2 = d;
     return;
@@ -180,7 +180,7 @@ void setDimension2(int d)
         Precondition: R exists
         Postcondition: variable R is set
         */
-void setR(int r)
+void Message2::setR(int r)
 {
     R = r;
     return;
@@ -191,7 +191,7 @@ void setR(int r)
         Precondition: G exists
         Postcondition: variable G is set
         */
-void setG(int g)
+void Message2::setG(int g)
 {
     G = g;
     return;
@@ -202,7 +202,7 @@ void setG(int g)
         Precondition: B exists
         Postcondition: variable B is set
         */
-void setB(int b)
+void Message2::setB(int b)
 {
     B = b;
     return;
@@ -213,7 +213,7 @@ void setB(int b)
         Precondition: Point class exists and location exists
         Postcondition: variable location is returned
         */
-Point getLoc()
+Point Message2::getLoc()
 {
     return oldLoc;
 }
@@ -223,7 +223,7 @@ Point getLoc()
         Precondition: old location exists
         Postcondition: variable old location is returned
         */
-Point getOldLoc()
+Point Message2::getOldLoc()
 {
     return oldLoc;
 }
@@ -233,7 +233,7 @@ Point getOldLoc()
         Precondition: dimension1 exists
         Postcondition: variable dimension1 is returned
         */
-int getDimension1()
+int Message2::getDimension1()
 {
     return dimension1;
 }
@@ -243,7 +243,7 @@ int getDimension1()
         Precondition: dimension2 exists
         Postcondition: variable dimension2 is returned
         */
-int getDimension2()
+int Message2::getDimension2()
 {
     return dimension2;
 }
@@ -253,7 +253,7 @@ int getDimension2()
         Precondition: R exists
         Postcondition: variable R is returned
         */
-int getR()
+int Message2::getR()
 {
     return R;
 }
@@ -263,7 +263,7 @@ int getR()
         Precondition: G exists
         Postcondition: variable G is returned
         */
-int getG()
+int Message2::getG()
 {
     return G;
 }
@@ -273,7 +273,7 @@ int getG()
         Precondition: B exists
         Postcondition: variable B is returned
         */
-int getB()
+int Message2::getB()
 {
     return B;
 }

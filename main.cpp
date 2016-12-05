@@ -143,11 +143,11 @@ int main(int argc, char ** argv)
     int dName = 3; //Pokemon d is a charmander to start
     int eName = 4; //Pokemon e is a gastly to start
 
-    a.pokemonName = pokemen[aName];
-    b.pokemonName = pokemen[bName];
-    c.pokemonName = pokemen[cName];
-    d.pokemonName = pokemen[dName];
-    e.pokemonName = pokemen[eName];
+    a.setPokemonName(pokemen[aName]);
+    b.setPokemonName(pokemen[bName]);
+    c.setPokemonName(pokemen[cName]);
+    d.setPokemonName(pokemen[dName]);
+    e.setPokemonName(pokemen[eName]);
 
     char Key;
 
@@ -156,23 +156,23 @@ int main(int argc, char ** argv)
 
     a.setLoc(background.objectBackground[aLocX][aLocY]); //Set pokemon a's location to the appropriate coordinates
     a.scopeBackground(background.objectBackground); //Give pokemon a knowledge of the background vector's existence
-    a.createSprite(a.pokemonName); //Assign pokemon a to its sprite
+    a.createSprite(a.getPokemonName()); //Assign pokemon a to its sprite
 
     b.setLoc(background.objectBackground[bLocX][bLocY]);
     b.scopeBackground(background.objectBackground);
-    b.createSprite(b.pokemonName);
+    b.createSprite(b.getPokemonName());
 
     c.setLoc(background.objectBackground[cLocX][cLocY]);
     c.scopeBackground(background.objectBackground);
-    c.createSprite(c.pokemonName);
+    c.createSprite(c.getPokemonName());
 
     d.setLoc(background.objectBackground[dLocX][dLocY]);
     d.scopeBackground(background.objectBackground);
-    d.createSprite(d.pokemonName);
+    d.createSprite(d.getPokemonName());
 
     e.setLoc(background.objectBackground[eLocX][eLocY]);
     e.scopeBackground(background.objectBackground);
-    e.createSprite(e.pokemonName);
+    e.createSprite(e.getPokemonName());
 
     player.setLoc(background.objectBackground[500][500]);
     player.scopePlayerBackground(background.objectBackground);
@@ -265,7 +265,7 @@ int main(int argc, char ** argv)
         }
 
 
-        if(a.deleted == false) //If the pokemon hasn't been caught yet
+        if(a.getDeleted() == false) //If the pokemon hasn't been caught yet
         {
             a.draw(g); //Draw the pokemon
         }
@@ -345,12 +345,12 @@ int main(int argc, char ** argv)
                 }
             }
 
-            a.pokemonName = pokemen[aName]; //Reset the pokemon file name
+            a.setPokemonName(pokemen[aName]); //Reset the pokemon file name
             a.setLoc(background.objectBackground[aLocX][aLocY]); //Reset the location
-            a.createSprite(a.pokemonName); //Reset the sprite
-            a.deleted = false; //Set deleted to false
+            a.createSprite(a.getPokemonName()); //Reset the sprite
+            a.setDeleted(false); //Set deleted to false
         }
-        if(b.deleted == false)
+        if(b.getDeleted() == false)
         {
             b.draw(g);
         }
@@ -430,12 +430,12 @@ int main(int argc, char ** argv)
                 }
             }
 
-            b.pokemonName = pokemen[bName];
-            b.setLoc(background.objectBackground[bLocX][bLocY]);
-            b.createSprite(b.pokemonName);
-            b.deleted = false;
+            b.setPokemonName(pokemen[bName]); //Reset the pokemon file name
+            b.setLoc(background.objectBackground[bLocX][bLocY]); //Reset the location
+            b.createSprite(b.getPokemonName()); //Reset the sprite
+            b.setDeleted(false); //Set deleted to false
         }
-        if(c.deleted == false)
+        if(c.getDeleted() == false)
         {
             c.draw(g);
         }
@@ -518,12 +518,12 @@ int main(int argc, char ** argv)
                 }
             }
 
-            c.pokemonName = pokemen[cName];
-            c.setLoc(background.objectBackground[cLocX][cLocY]);
-            c.createSprite(c.pokemonName);
-            c.deleted = false;
+            c.setPokemonName(pokemen[cName]); //Reset the pokemon file name
+            c.setLoc(background.objectBackground[cLocX][cLocY]); //Reset the location
+            c.createSprite(c.getPokemonName()); //Reset the sprite
+            c.setDeleted(false); //Set deleted to false
         }
-        if(d.deleted == false)
+        if(d.getDeleted() == false)
         {
             d.draw(g);
         }
@@ -603,12 +603,12 @@ int main(int argc, char ** argv)
                 }
             }
 
-            d.pokemonName = pokemen[dName];
-            d.setLoc(background.objectBackground[dLocX][dLocY]);
-            d.createSprite(d.pokemonName);
-            d.deleted = false;
+            d.setPokemonName(pokemen[dName]); //Reset the pokemon file name
+            d.setLoc(background.objectBackground[dLocX][dLocY]); //Reset the location
+            d.createSprite(d.getPokemonName()); //Reset the sprite
+            d.setDeleted(false); //Set deleted to false
         }
-        if(e.deleted == false)
+        if(e.getDeleted() == false)
         {
             e.draw(g);
         }
@@ -688,10 +688,10 @@ int main(int argc, char ** argv)
                 }
             }
 
-            e.pokemonName = pokemen[eName];
-            e.setLoc(background.objectBackground[eLocX][eLocY]);
-            e.createSprite(e.pokemonName);
-            e.deleted = false;
+            e.setPokemonName(pokemen[eName]); //Reset the pokemon file name
+            e.setLoc(background.objectBackground[eLocX][eLocY]); //Reset the location
+            e.createSprite(e.getPokemonName()); //Reset the sprite
+            e.setDeleted(false); //Set deleted to false
         }
         player.draw(g); //Draw the player
         integerToString << timer; //Convert integer to string
@@ -863,7 +863,7 @@ int main(int argc, char ** argv)
                         {
                             catchPokemon(g, e, dontStop, messageShow);
                         }
-                        else if(ball.loc.x <= 100 || ball.loc.y <= 100 || ball.loc.x >= 900 || ball.loc.y >= 900) //Erase the ball if it exits tree boundaries
+                        else if(ball.getLoc().x <= 100 || ball.getLoc().y <= 100 || ball.getLoc().x >= 900 || ball.getLoc().y >= 900) //Erase the ball if it exits tree boundaries
                         {
                             dontStop = 0;
                             ball.specialErase(g);
@@ -894,23 +894,23 @@ int main(int argc, char ** argv)
 
         a.setLoc(background.objectBackground[aLocX][aLocY]);
         a.scopeBackground(background.objectBackground);
-        a.createSprite(a.pokemonName);
+        a.createSprite(a.getPokemonName());
 
         b.setLoc(background.objectBackground[bLocX][bLocY]);
         b.scopeBackground(background.objectBackground);
-        b.createSprite(b.pokemonName);
+        b.createSprite(b.getPokemonName());
 
         c.setLoc(background.objectBackground[cLocX][cLocY]);
         c.scopeBackground(background.objectBackground);
-        c.createSprite(c.pokemonName);
+        c.createSprite(c.getPokemonName());
 
         d.setLoc(background.objectBackground[dLocX][dLocY]);
         d.scopeBackground(background.objectBackground);
-        d.createSprite(d.pokemonName);
+        d.createSprite(d.getPokemonName());
 
         e.setLoc(background.objectBackground[eLocX][eLocY]);
         e.scopeBackground(background.objectBackground);
-        e.createSprite(e.pokemonName);
+        e.createSprite(e.getPokemonName());
 
         player.setLoc(background.objectBackground[500][500]);
         player.scopePlayerBackground(background.objectBackground);
@@ -954,7 +954,7 @@ void catchPokemon(SDL_Plotter& g, Pokemon& pokemon, int& dontStop, bool& message
     g.playSound("Pokemon_Red_2FBlue_2FYellow_GB_Music_-_Pokemon_Cau.wav");
     dontStop = 0;
     pokemon.specialErase(g);
-    pokemon.deleted = true;
+    pokemon.setDeleted(true);
     messageShow = true;
     g.update();
 }
@@ -967,15 +967,15 @@ bool ballCollide(Pokeball a, Pokemon b)
     int g = 0;
     int h = 0;
 
-    for(int i = 0; i < b.dimension1; i++)
+    for(int i = 0; i < b.getDimension1(); i++)
     {
         while(g < 20)
         {
-            for(int f = 0; f < b.dimension2; f++)
+            for(int f = 0; f < b.getDimension2(); f++)
             {
                 while(h < 20)
                 {
-                    if(b.loc.x + i == a.loc.x + g && b.loc.y + f == a.loc.y + h)
+                    if(b.getLoc().x + i == a.getLoc().x + g && b.getLoc().y + f == a.getLoc().y + h)
                     {
                         collide = true;
                         stop = true;

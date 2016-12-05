@@ -18,12 +18,12 @@ class Pokeball
 {
     private:
         Point oldLoc;
+        int dimension1, dimension2;
+        Point loc;
         int speed;
         int R, G, B;
         Color ball[20][20];
     public:
-        int dimension1, dimension2;
-        Point loc;
         vector <vector<Point> > background;
         Pokeball();
         void scopeBallBackground(vector <vector<Point> > scopeBallBackground);
@@ -31,8 +31,13 @@ class Pokeball
         void erase(SDL_Plotter&);
         void move(int);
         void setLoc(Point);
+        Point getLoc();
         void createSprite();
         void specialErase(SDL_Plotter&);
+        void setDimension1(int);
+        void setDimension2(int);
+        int getDimension1();
+        int getDimension2();
 };
 
         /*
@@ -176,5 +181,63 @@ void Pokeball::setLoc(Point p)
     loc.y = p.y;
     loc.x = p.x;
 }
+
+ /*
+        Description: This function gets Location of Pokeball
+        Return: Point
+        Precondition: Point class exists and Loc exists
+        Postcondition: Loc variable unchange
+        */
+
+Point Pokeball::getLoc(){
+    return loc;
+}
+
+ /*
+        Description: This function gets Dinension 1
+        Return: int
+        Precondition: The Dimension1 variable exists
+        Postcondition: The Dimension1 variable is unchanged.
+        */
+int Pokeball::getDimension1(){
+    return dimension1;
+}
+
+ /*
+        Description: This function gets Dinension 2
+        Return: int
+        Precondition: The Dimension2 variable exists
+        Postcondition: The Dimension2 variable is unchanged.
+        */
+int Pokeball::getDimension2(){
+    return dimension2;
+}
+
+/*
+ * description: sets dimension2
+ * return: none
+ * precondition: dimension2 needs to be changed
+ * postcondition: dimension2 is changed
+ *
+*/
+void Pokeball::setDimension2(int d)
+{
+    dimension2 = d;
+    return;
+}
+
+/*
+ * description: sets dimension1
+ * return: none
+ * precondition: dimension1 needs to be changed
+ * postcondition: dimension1 is changed
+ *
+*/
+void Pokeball::setDimension1(int d)
+{
+    dimension1 = d;
+    return;
+}
+
 
 #endif // POKEBALL_H_INCLUDED

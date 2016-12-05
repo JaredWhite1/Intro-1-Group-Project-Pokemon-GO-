@@ -39,7 +39,6 @@ class Pokemon{
         void specialErase(SDL_Plotter&);
 
         void setOldLoc(Point p);
-        void setLoc(Point p);
         void setDeleted(bool d);
         void setPokemonName(string name);
         void setDimension1(int d);
